@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Exercise 4 - Parse a Device</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    </head>       
+    <body>
+        <h1>Browse a new device</h1>
+        <form id="message-form">
+            <input type="text" id="host" name="host" value="http://devices.webofthings.io/pi" placeholder="The root URL of a WoT device"/>
+            <button type="submit">Browse this device</button>
+        </form>
+        
+        <h4>Device Metadata</h4>
+        
+        <p>
+            <b>Metadata.</b> A general model used by this device can be found here: <div id="meta"></div>
+        </p>
+        
+        <p>
+            <b>Documentation.</b> A human-readable documentation specifically for this device can be found here: <div id="doc"></div>
+        </p>
+        
+        <p>
+            <b>Sensors.</b> The sensors offered by this device:
+        
+            <div id="sensors"></div>
+        </p>
+        <ul id="sensors-list">
+        </ul>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script><script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+        <!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> -->
+        <script type = "text/javascript" src = "./app2.js"></script>
+    </body>
+</html>

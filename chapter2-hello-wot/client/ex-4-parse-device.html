@@ -39,13 +39,14 @@
 </ul>
 
 <script>
+
 (function ($) {
   function processForm(e) {
 
     var sensorsPath = '';
 
     $.ajax({//#A
-      url: $('#host').val(),
+      url: $('#host').val(), // retrieve what was put into the text box
       method: 'GET',
       dataType: 'json',
       success: function (data) {
@@ -63,7 +64,7 @@
 
             $('#sensors').html(Object.keys(data).length + " sensors found!");
 
-            for (var key in data) { //#F
+            for (var key in data) { //#F in the first example, key would be "temperature"
               sensorList = sensorList + "<li><a href=\"" + sensorsPath + key + "\">" + data[key].name + "</a></li>";
             }
 
