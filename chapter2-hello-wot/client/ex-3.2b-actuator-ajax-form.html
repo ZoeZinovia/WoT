@@ -27,13 +27,14 @@
 			(function($){ function processForm( e ){ 
 				$.ajax({ 
 					url: 'http://devices.webofthings.io/pi/actuators/display/content/', //#A
-					dataType: 'text', //#B
+					dataType: 'json', //#B
 					type: 'post', //#C
-					contentType: 'application/x-www-form-urlencoded', //#D
-					data: $(this).serialize(), //#E
-					success: function( data, textStatus, jQxhr ){ //#F
-						$('#response pre').html( data ); 
-					}, 
+					contentType: 'application/json',
+					data: JSON.stringify({"value": $('#value').val()}), 
+					processData: false,
+					success: function( data, textStatus, jQxhr ){
+						$('#response pre').html( JSON.stringify( data ) ); 
+					},
 					error: function( jqXhr, textStatus, errorThrown ){//#G 
 						console.log( errorThrown ); 
 					} 
