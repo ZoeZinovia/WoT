@@ -2,11 +2,11 @@
   "name": "wot-book-node",
   "description": "Examples for the Web of Things Book",
   "author": "Dominique Guinard",
-  "repository": "https://github.com/webofthings/wot-book.git",
+  "repository": "https://github.com/ZoeZinovia/WoT.git",
   "dependencies": {
     "async": "^0.9.0",
     "get-json": "^1.0.1",
-    "request": "^2.53.0"
+    "request": "^2.88.2"
   },
   "devDependencies": {},
   "engine": "node >= 4.2.2"
