@@ -14,7 +14,7 @@
                     type: 'get',
                     success: function(data, textStatus, jQxhr){
                         var sensorList = "";
-
+                        alert(sensorspath);
                         $('#sensors').html(Object.keys(data).length + " sensors found!");
                         for(var key in data){
                             sensorList = sensorList + "<li><a href = \"" + sensorspath + key + "\">"+ data[key].name +"</a></li>";
