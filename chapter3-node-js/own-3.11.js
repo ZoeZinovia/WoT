@@ -8,7 +8,7 @@ var getJSON = require("get-json"),
     http.createServer(function(req, res){
         console.log('New incoming client request for ' + req.url);
         if(req.url === "/log"){
-                async.series([
+                async.parallel([
                     temperatureCallback,
                     weatherCallback
                 ], 
