@@ -1,6 +1,8 @@
 var gpio = require("onoff").Gpio,
     sensor = new gpio(17, "in", "both");
 
+    console.log("starting program");
+
 sensor.watch(function(err, value){
     if(err)
         exit(err);
