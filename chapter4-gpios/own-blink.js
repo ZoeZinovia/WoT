@@ -1,6 +1,6 @@
 var onoff = require("onoff");
 var gpio = onoff.Gpio,
-    led = new Gpio(4, "out"),
+    led = new gpio(4, "out"),
     interval;
 
 interval = setInterval(function(){

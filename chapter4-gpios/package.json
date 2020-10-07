@@ -4,6 +4,7 @@
   "author": "Vlad Trifa <vladounet@gmail.com>",
   "repository": "https://github.com/webofthings/wot-book.git",
   "dependencies": {
+<<<<<<< HEAD
     "epoll": "^4.0.0",
     "gpio": "^0.2.10",
     "http": "0.0.1-security",
@@ -11,6 +12,26 @@
     "node-dht-sensor": "^0.0.8",
     "onoff": "^1.0.3",
     "require": "^2.4.20"
+=======
+    "http": "0.0.1-security",
+    "node-dht-sensor": "^0.0.8",
+    "onoff": "^1.0.3",
+    "request": "^2.88.2"
+>>>>>>> c5acb7a4287e2c9458d91cc1fa28a0d3f0b0091c
   },
   "engine": "node >= 0.12.0"
 }
+{
+  "name": "wot-book-gpio",
+  "description": "Examples for the Web of Things Book",
+  "author": "Vlad Trifa <vladounet@gmail.com>",
+  "repository": "https://github.com/webofthings/wot-book.git",
+  "dependencies": {
+    "http": "0.0.1-security",
+    "node-dht-sensor": "^0.0.8",
+    "onoff": "^1.0.3",
+    "request": "^2.88.2"
+  },
+  "engine": "node >= 0.12.0"
+}
+
