@@ -21,9 +21,9 @@ sensor.watch(function(err, value){
     }
 });
 
-var interval = setInterval(function(){
-    read();
-}, 2000);
+// var interval = setInterval(function(){
+//     read();
+// }, 2000);
 
 function read(){
     var readout = sensorLib.read();
@@ -34,7 +34,7 @@ function read(){
 function exit(err){
     if(err)
         console.log("error occured: " + err);
-    clearInterval(interval);
+    // clearInterval(interval);
     sensor.unexport();
     led.unexport();
     console.log("\nBye, bye!");
