@@ -6,7 +6,7 @@
   "dependencies": {
     "http": "0.0.1-security",
     "node-dht-sensor": "^0.4.3",
-    "onoff": "^1.0.3",
+    "onoff": "^6.0.0",
     "request": "^2.88.2"
 },
   "engine": "node >= 0.12.0"
