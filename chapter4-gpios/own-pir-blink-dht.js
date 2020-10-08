@@ -13,20 +13,21 @@ function read(){
     console.log("Temperature: " + readout.temperature.toFixed(1) + "C, " + "humidity: " + readout.humidity.toFixed(1) + "%");
 };
 
+sensor.watch(function(err, value){
+    if(err)
+        exit(err);
+    if(value){
+        led.write(1, function(){
+            console.log("Someone is here!!");
+        });
+    } else{
+        led.write(0, function(){
+            console.log("Empty space...");
+        });
+    }
+});
+
 var interval = setInterval(function(){
-    sensor.watch(function(err, value){
-        if(err)
-            exit(err);
-        if(value){
-            led.write(1, function(){
-                console.log("Someone is here!!");
-            });
-        } else{
-            led.write(0, function(){
-                console.log("Empty space...");
-            });
-        }
-    });
     read();
 }, 2000);
 
