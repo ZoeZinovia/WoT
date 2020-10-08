@@ -3,25 +3,24 @@ var gpio = require("onoff").Gpio,
     led = new gpio(4, "out");
     sensorLib = require("node-dht-sensor");
 
-console.log("starting program");
+console.log("starting own-pir-blink-dht program");
 
 sensorLib.initialize(11, 12);
 
-sensor.watch(function(err, value){
-    if(err)
-        exit(err);
-    if(value){
-        led.write(1, function(){
-            console.log("Someone is here!!");
-        });
-    } else{
-        led.write(0, function(){
-            console.log("Empty space...");
-        });
-    }
-});
-
 var interval = setInterval(function(){
+    sensor.watch(function(err, value){
+        if(err)
+            exit(err);
+        if(value){
+            led.write(1, function(){
+                console.log("Someone is here!!");
+            });
+        } else{
+            led.write(0, function(){
+                console.log("Empty space...");
+            });
+        }
+    });
     read();
 }, 2000);
 
