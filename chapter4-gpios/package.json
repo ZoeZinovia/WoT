@@ -5,7 +5,7 @@
   "repository": "https://github.com/webofthings/wot-book.git",
   "dependencies": {
     "http": "0.0.1-security",
-    "node-dht-sensor": "^0.0.8",
+    "node-dht-sensor": "^0.4.3",
     "onoff": "^1.0.3",
     "request": "^2.88.2"
   },
