@@ -1,7 +1,7 @@
 var gpio = require("onoff").Gpio,
     sensor = new gpio(17, "in", "both"),
-    led = new gpio(4, "out"),
-    sensorLib = require("node-dht-sensor");
+    led = new gpio(4, "out");
+    // sensorLib = require("node-dht-sensor");
 
 console.log("starting program");
 
