@@ -5,7 +5,7 @@ var gpio = require("onoff").Gpio,
 
 console.log("starting program");
 
-sensorLib.initialize(11, 12);
+// sensorLib.initialize(11, 12);
 
 sensor.watch(function(err, value){
     if(err)
@@ -25,11 +25,11 @@ sensor.watch(function(err, value){
 //     read();
 // }, 2000);
 
-function read(){
-    var readout = sensorLib.read();
-    console.log(readout.errors);
-    console.log("Temperature: " + readout.temperature.toFixed(1) + "C, " + "humidity: " + readout.humidity.toFixed(1) + "%");
-};
+// function read(){
+//     var readout = sensorLib.read();
+//     console.log(readout.errors);
+//     console.log("Temperature: " + readout.temperature.toFixed(1) + "C, " + "humidity: " + readout.humidity.toFixed(1) + "%");
+// };
 
 function exit(err){
     if(err)
