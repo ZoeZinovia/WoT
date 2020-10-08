@@ -7,6 +7,12 @@ console.log("starting own-pir-blink-dht program");
 
 sensorLib.initialize(11, 12);
 
+function read(){
+    var readout = sensorLib.read();
+    console.log(readout.errors);
+    console.log("Temperature: " + readout.temperature.toFixed(1) + "C, " + "humidity: " + readout.humidity.toFixed(1) + "%");
+};
+
 var interval = setInterval(function(){
     sensor.watch(function(err, value){
         if(err)
@@ -23,12 +29,6 @@ var interval = setInterval(function(){
     });
     read();
 }, 2000);
-
-function read(){
-    var readout = sensorLib.read();
-    console.log(readout.errors);
-    console.log("Temperature: " + readout.temperature.toFixed(1) + "C, " + "humidity: " + readout.humidity.toFixed(1) + "%");
-};
 
 function exit(err){
     if(err)
