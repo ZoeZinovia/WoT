@@ -1,0 +1,43 @@
+{
+    "pi": {
+        "name" : "WoT Pi",
+        "description" : "WoT-connected Raspberry Pi for CEOT",
+        "port" : "8484",
+        "sensors" : {
+            "temperature": {
+                "name" : "Temperature Sensor",
+                "description" : "Ambient temperature sensor",
+                "unit" : "celcius",
+                "value" : 0,
+                "gpio" : 12
+            },
+            "humidity": {
+                "name" : "Humidity Sensor",
+                "description" : "Ambient Humidity Sensor",
+                "unit" : "%",
+                "value" : 0,
+                "gpio" : 12
+            },
+            "pir": {
+                "name" : "Passive Infrared",
+                "description" : "Passive infrared sensor that detects whether a living body is near. When the value is true, someone/thing is present.",
+                "value" : true,
+                "gpio" : 17
+            }
+        },
+        "actuators" : {
+            "leds" : {
+                "1" : {
+                    "name" : "LED 1",
+                    "value" : false,
+                    "gpio" : 4
+                },
+                "2" : {
+                    "name" : "LED 2",
+                    "value" : false,
+                    "gpio" : 9
+                }
+            }
+        }
+    } 
+}
