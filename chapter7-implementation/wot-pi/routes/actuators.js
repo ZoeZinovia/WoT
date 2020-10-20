@@ -20,7 +20,7 @@ router.route("/leds/:id").get(function(req, res, next){
     // res.send(resources.pi.actuators.leds[req.params.id]);
 });
 
-router.route("/leds/:id").put(function(req, res, next){
+router.route("/leds/:id").post(function(req, res, next){
     var selectedLed = resources.pi.actuators.leds[req.params.id];
     console.log(req.body);
     selectedLed.value = true;
