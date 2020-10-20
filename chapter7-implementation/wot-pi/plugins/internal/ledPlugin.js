@@ -32,6 +32,7 @@ function observe(object){
         console.info("Change detected for %s...", pluginName);
         switchOnOff(model.leds["2"]);
     });
+    change.value = true;
 } 
 
 function switchOnOff(led2){
