@@ -7,6 +7,7 @@ var resources = require("./../../resources/model"),
 
 exports.start = function(params) {
     localParams = params;
+    observe(model);
     if(localParams.simulate){
         simulate(); //assuming this is used if you don't have a physical Raspberry Pi
     } else {
@@ -24,6 +25,21 @@ exports.stop = function(){
     console.log("%s plugin stopped!", pluginName);
 };
 
+function observe(object){
+    Object.observe(object, function(change){
+        console.info("Change detected for %s...", pluginName);
+        switchOnOff(model.leds["2"]);
+    });
+} 
+
+function switchOnOff(led2){
+    if(!localParams.simulate){
+        led2.write(led2.value, function(){
+            console.log("Changed LED2 state to: " + led2.value);
+        });
+    }
+}
+
 function connectHardware(){
     var gpio = require("onoff").Gpio;
     led1 = new gpio(model.leds["1"].gpio, "out");
@@ -35,10 +51,6 @@ function connectHardware(){
             console.log("Changed LED1 state to: " + value1);
             model.leds["1"].value = !!value1;
         });
-        // led2.write(value2, function(){
-        //     console.log("Changed LED2 state to: " + value2);
-        //     model.leds["2"].value = !!value2;
-        // });
     }, localParams.frequency)
     console.log("Hardware %s plugin started!", pluginName);
 };
