@@ -2,6 +2,7 @@ var resources = require("./../../resources/model"),
     interval,
     sensor,
     model = resources.pi.actuators,
+    pluginName = model.leds[1].name + " & " + model.leds[2].name,
     localParams = {"simulate" : false, "frequency" : 2000};
 
 exports.start = function(params) {
