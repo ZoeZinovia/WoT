@@ -1,4 +1,5 @@
 var resources = require("./../../resources/model"),
+    onChange = require("onChange");
     interval,
     sensor,
     model = resources.pi.actuators,
@@ -26,7 +27,7 @@ exports.stop = function(){
 };
 
 function observe(object){
-    Object.observe(object, function(change){
+    onChange(object, function(change){
         console.info("Change detected for %s...", pluginName);
         switchOnOff(model.leds["2"]);
     });
