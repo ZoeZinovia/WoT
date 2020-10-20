@@ -30,7 +30,7 @@ function connectHardware(){
     led2 = new gpio(model.leds["2"].gpio, "out");
     interval = setInterval(function(){
         var value1 = (led1.readSync() + 1)%2;
-        var value2 = (led1.readSync);
+        var value2 = (!value1);
         led1.write(value1, function(){
             console.log("Changed LED1 state to: " + value1);
         });
