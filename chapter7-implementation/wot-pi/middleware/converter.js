@@ -6,14 +6,14 @@ module.exports = function(){
     return function(req, res, next){
         console.info("Representation converter middleware has been called!!");
         if(req.result){
-            if(req.accepts("json")){
-                console.info("JSON representation selected.");
-                res.send(req.result);
-                return;
-            }
             if(req.accepts("html")){
                 console.info("HTML representation selected.");
                 res.send(json2html.transform(req.result, transform));
+                return;
+            }
+            if(req.accepts("json")){
+                console.info("JSON representation selected.");
+                res.send(req.result);
                 return;
             }
             if(req.accepts("application/x-msgpack")){
