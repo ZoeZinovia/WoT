@@ -8,7 +8,7 @@ var resources = require("./../../resources/model"),
 
 exports.start = function(params) {
     localParams = params;
-    onChange(object, function(change){
+    onChange(model.leds["2"], function(){
         console.info("Change detected for %s...", pluginName);
         switchOnOff(model.leds["2"]);
     });
