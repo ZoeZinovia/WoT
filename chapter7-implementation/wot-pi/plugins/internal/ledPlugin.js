@@ -8,10 +8,7 @@ var resources = require("./../../resources/model"),
 
 exports.start = function(params) {
     localParams = params;
-    onChange(model.leds["2"], function(){
-        console.info("Change detected for %s...", pluginName);
-        switchOnOff(model.leds["2"]);
-    });
+    observe(model.leds["2"]);
     if(localParams.simulate){
         simulate(); //assuming this is used if you don't have a physical Raspberry Pi
     } else {
@@ -31,7 +28,7 @@ exports.stop = function(){
 
 function observe(object){
     console.log("checking if change detection works");
-    onChange(object, function(change){
+    watch(object, "value", function(){
         console.info("Change detected for %s...", pluginName);
         switchOnOff(model.leds["2"]);
     });

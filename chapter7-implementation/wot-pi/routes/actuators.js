@@ -24,6 +24,7 @@ router.route("/leds/:id").get(function(req, res, next){
     selectedLed.value = req.body.value;
     console.info("Changed LED %s value to %s", selectedLed.name, selectedLed.value );
     req.result = selectedLed;
+    // res.value = true;
     next();
 });
 
