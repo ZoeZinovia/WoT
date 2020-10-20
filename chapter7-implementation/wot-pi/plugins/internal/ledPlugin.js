@@ -33,11 +33,11 @@ function connectHardware(){
         var value2 = (led1.readSync());
         led1.write(value1, function(){
             console.log("Changed LED1 state to: " + value1);
-            model.leds["1"].value = value1;
+            model.leds["1"].value = !!value1;
         });
         led2.write(value2, function(){
             console.log("Changed LED2 state to: " + value2);
-            model.leds["2"].value = value2;
+            model.leds["2"].value = !!value2;
         });
     }, localParams.frequency)
     console.log("Hardware %s plugin started!", pluginName);
