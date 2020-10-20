@@ -27,6 +27,7 @@ exports.stop = function(){
 };
 
 function observe(object){
+    console.log("checking if change detection works");
     onChange(object, function(change){
         console.info("Change detected for %s...", pluginName);
         switchOnOff(model.leds["2"]);
