@@ -35,9 +35,10 @@ function observe(object){
     change.value = true;
 } 
 
-function switchOnOff(led2){
+function switchOnOff(object){
     if(!localParams.simulate){
-        led2.write(led2.value, function(){
+        led2 = new gpio(model.leds["2"].gpio, "out");
+        led2.write(object.value, function(){
             console.log("Changed LED2 state to: " + led2.value);
         });
     }
@@ -46,7 +47,6 @@ function switchOnOff(led2){
 function connectHardware(){
     var gpio = require("onoff").Gpio;
     led1 = new gpio(model.leds["1"].gpio, "out");
-    led2 = new gpio(model.leds["2"].gpio, "out");
     interval = setInterval(function(){
         var value1 = (led1.readSync() + 1)%2;
         var value2 = false;
