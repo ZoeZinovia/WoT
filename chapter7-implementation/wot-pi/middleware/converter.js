@@ -8,7 +8,8 @@ module.exports = function(){
         if(req.result){
             if(req.accepts("html")){
                 console.info("HTML representation selected.");
-                res.send(json2html.transform(req.result));
+                var transform = {'tag': 'div', 'html': '${name} : ${value}'};
+                res.send(json2html.transform(req.result, transform));
                 return;
             }
             if(req.accepts("json")){
