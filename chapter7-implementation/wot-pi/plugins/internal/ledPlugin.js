@@ -6,7 +6,6 @@ var resources = require("./../../resources/model"),
 
 exports.start = function(params) {
     localParams = params;
-    observe(model);
     if(localParams.simulate){
         simulate(); //assuming this is used if you don't have a physical Raspberry Pi
     } else {
