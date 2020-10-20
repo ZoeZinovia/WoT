@@ -11,6 +11,7 @@ exports.start = function(params) {
     } else {
         connectHardware();
     }
+    console.log("%s plugin started!", pluginName)
 };
 
 exports.stop = function(){
