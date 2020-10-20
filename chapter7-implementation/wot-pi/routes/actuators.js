@@ -3,9 +3,9 @@ var express = require("express"),
     resources = require("./../resources/model");
 
 router.route("/").get(function(req, res, next){
-    req.result = resources.pi.actuators;
-    next();
-    // res.send(resources.pi.actuators);
+    // req.result = resources.pi.actuators;
+    // next();
+    res.send(resources.pi.actuators);
 });
 
 router.route("/leds").get(function(req, res, next){
