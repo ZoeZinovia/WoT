@@ -1,5 +1,5 @@
 var resources = require("./../../resources/model"),
-    onChange = require("onChange");
+    onChange = require("on-change");
     interval,
     sensor,
     model = resources.pi.actuators,
