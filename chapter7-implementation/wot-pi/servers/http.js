@@ -8,8 +8,7 @@ var express = require("express"),
 
 var app  = express();
 
-// app.use(bodyParser.json());
-
+app.use(bodyParser.json());
 
 app.use(cors());
 
@@ -20,6 +19,6 @@ app.get("/pi", function(req, res){
     res.send("Welcome to CEOT Raspberry Pi")
 });
 
-// app.use(converter());
+app.use(converter());
 
 module.exports = app;
