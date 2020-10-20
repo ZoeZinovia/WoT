@@ -3,7 +3,7 @@ var resources = require("./../../resources/model"),
     sensor,
     model = resources.pi.actuators,
     pluginName = model.leds[1].name + " & " + model.leds[2].name,
-    localParams = {"simulate" : false, "frequency" : 2000};
+    localParams = {"simulate" : false, "frequency" : 10000};
 
 exports.start = function(params) {
     localParams = params;
@@ -30,7 +30,7 @@ function connectHardware(){
     led2 = new gpio(model.leds["2"].gpio, "out");
     interval = setInterval(function(){
         var value1 = (led1.readSync() + 1)%2;
-        var value2 = (!value1);
+        var value2 = (led1.readSync());
         led1.write(value1, function(){
             console.log("Changed LED1 state to: " + value1);
         });
