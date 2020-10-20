@@ -37,7 +37,7 @@ function connectHardware(){
         led2.write(value2, function(){
             console.log("Changed LED2 state to: " + value2);
         });
-    })
+    }, localParams.frequency)
     console.log("Hardware %s plugin started!", pluginName);
 };
 
