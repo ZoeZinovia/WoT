@@ -4,11 +4,16 @@
   "description": "WoT Webserver",
   "main": "wot-server.js",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "http": "0.0.1-security",
+    "msgpack5": "^4.2.1",
     "node-dht-sensor": "^0.4.3",
+    "node-json2html": "^1.4.0",
     "nodemon": "^2.0.5",
+    "object-observable": "^1.0.8",
+    "on-change": "^2.1.4",
     "onoff": "^6.0.1"
   },
   "devDependencies": {},
