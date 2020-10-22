@@ -16,8 +16,7 @@
     "object-observe": "0.0.2",
     "object-observer": "^3.2.0",
     "on-change": "^2.1.4",
-    "onoff": "^6.0.1",
-    "type": "module"
+    "onoff": "^6.0.1"
   },
   "devDependencies": {},
   "scripts": {
