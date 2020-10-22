@@ -2,6 +2,9 @@ var express = require("express"),
     router = express.Router(),
     resources = require("./../resources/model");
 
+const hook = asyncHooks.createHook( 
+    { init, before, after, destroy });
+
 router.route("/").get(function(req, res, next){
     req.result = resources.pi.actuators;
     next();
