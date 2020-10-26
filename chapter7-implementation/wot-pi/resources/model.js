@@ -1,8 +1,2 @@
-var resources = require('./resources.json'),
-    ledPlugin = require("./../plugins/internal/ledPlugin");
-var set = function(resource, value){
-    resources.pi.actuators.leds["2"] = value;
-    ledPlugin.switchOnOff();
-}
+var resources = require('./resources.json');
 module.exports = resources;
-module.exports = set;
