@@ -1,6 +1,7 @@
 var express = require("express"),
     router = express.Router(),
-    resources = require("./../resources/model");
+    resources = require("./../resources/model"),
+    var ledPlugin = require("./plugins/internal/ledPlugin");
 
 router.route("/").get(function(req, res, next){
     req.result = resources.pi.actuators;
@@ -22,6 +23,7 @@ router.route("/leds/:id").get(function(req, res, next){
     var selectedLed = resources.pi.actuators.leds[req.params.id];
     console.log(req.body);
     selectedLed.value = req.body.value;
+    ledPlugin.switchOnOff();
     console.info("Changed LED %s value to %s", selectedLed.name, selectedLed.value );
     req.result = selectedLed;
     // res.value = true;
