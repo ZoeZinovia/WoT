@@ -26,9 +26,9 @@ var oldValue = model.leds["2"].value;
 
 exports.start = function(params) {
     localParams = params;
-    // setInterval(() => {
-    //     poll();
-    // }, 2000);
+    setInterval(() => {
+        poll();
+    }, 2000);
     if(localParams.simulate){
         simulate(); //assuming this is used if you don't have a physical Raspberry Pi
     } else {
@@ -59,8 +59,8 @@ function poll(){
 function switchOnOff(myModel){
     if(!localParams.simulate){
         var gpio = require("onoff").Gpio;
-        var led2 = new gpio(myModel.gpio, "out");
-        var value2 = !!myModel.value;
+        var led2 = new gpio(model.leds["2"].gpio, "out");
+        var value2 = 1;
         console.log("write with value " + value2);
         led2.write(value2, function(){
             console.log("Changed LED2 state to: " + myModel.value);
@@ -71,18 +71,18 @@ function switchOnOff(myModel){
 function connectHardware(){
     var gpio = require("onoff").Gpio;
     var led1 = new gpio(model.leds["1"].gpio, "out");
-    var led2 = new gpio(model.leds["2"].gpio, "out");
+    // var led2 = new gpio(model.leds["2"].gpio, "out");
     interval = setInterval(function(){
         var value1 = (led1.readSync() + 1)%2;
-        var value2 = 1;
+        // var value2 = 1;
         led1.write(value1, function(){
             console.log("Changed LED1 state to: " + value1);
             model.leds["1"].value = !!value1;
         });
-        led2.write(value2, function(){
-            console.log("Changed LED2 state to: " + value2);
-            model.leds["2"].value = !!value2;
-        });
+        // led2.write(value2, function(){
+        //     console.log("Changed LED2 state to: " + value2);
+        //     model.leds["2"].value = !!value2;
+        // });
     }, localParams.frequency)
     console.log("Hardware %s plugin started!", pluginName);
 };
