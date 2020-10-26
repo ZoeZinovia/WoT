@@ -26,7 +26,9 @@ var oldValue = model.leds["2"].value;
 
 exports.start = function(params) {
     localParams = params;
-    poll();
+    setInterval(() => {
+        poll();
+    }, localParams.frequency);
     if(localParams.simulate){
         simulate(); //assuming this is used if you don't have a physical Raspberry Pi
     } else {
