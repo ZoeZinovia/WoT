@@ -60,7 +60,7 @@ function switchOnOff(myModel){
     if(!localParams.simulate){
         var gpio = require("onoff").Gpio;
         var led2 = new gpio(model.leds["2"].gpio, "out");
-        var value2 = 0;
+        var value2 = + (!oldValue);
         console.log("write with value " + value2);
         led2.write(value2, function(){
             console.log("Changed LED2 state to: " + myModel.value);
