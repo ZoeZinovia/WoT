@@ -18,7 +18,7 @@ exports.stop = function(){
     if(localParams.simulate){
         clearInterval(interval);
     } else{
-        sensor.unexport()
+        sensor.unexport();
     }
     console.log("%s plugin stopped!", pluginName);
 };
