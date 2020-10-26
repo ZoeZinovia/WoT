@@ -28,7 +28,7 @@ exports.start = function(params) {
     localParams = params;
     setInterval(() => {
         poll();
-    }, localParams.frequency);
+    }, 2000);
     if(localParams.simulate){
         simulate(); //assuming this is used if you don't have a physical Raspberry Pi
     } else {
@@ -60,7 +60,7 @@ function switchOnOff(myModel){
     if(!localParams.simulate){
         var gpio = require("onoff").Gpio;
         var led2 = new gpio(myModel.gpio, "out");
-        led2.write(myModel.value, function(){
+        led2.write(!!myModel.value, function(){
             console.log("Changed LED2 state to: " + myModel.value);
         });
     }
