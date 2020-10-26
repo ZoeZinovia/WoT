@@ -51,7 +51,7 @@ function poll(){
     if(model.leds["2"].value != oldValue)
     {
         switchOnOff(model.leds["2"]);
-        oldValue = model.leds["2"];
+        oldValue = !oldValue;
         console.log("New led 2 value: " + oldValue);
     }
 } 
