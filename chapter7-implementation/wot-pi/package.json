@@ -17,6 +17,7 @@
     "object-observer": "^3.2.0",
     "on-change": "^2.1.4",
     "onoff": "^6.0.1",
+    "proxy-observe": "0.0.21",
     "ws": "^7.3.1"
   },
   "devDependencies": {},
