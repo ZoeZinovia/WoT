@@ -2,7 +2,8 @@ var resources = require("./../../resources/model"),
     interval,
     model = resources.pi.actuators,
     pluginName = model.leds[1].name + " & " + model.leds[2].name,
-    localParams = {"simulate" : false, "frequency" : 10000};
+    localParams = {"simulate" : false, "frequency" : 10000},
+    Object = require("proxy-observe");
 
 var gpio = require("onoff").Gpio,
     led1 = new gpio(model.leds["1"].gpio, "out"),
@@ -11,6 +12,10 @@ var gpio = require("onoff").Gpio,
 exports.start = function(params) 
 {
     localParams = params;
+    Object.observe(model.leds["2"], function(change){
+        console.info(change);
+        switchOnOff();
+    })
     if(localParams.simulate)
     {
         simulate(); //assuming this is used if you don't have a physical Raspberry Pi
