@@ -7,6 +7,8 @@ var resources = require("./../../resources/model"),
     pluginName = model.leds[1].name + " & " + model.leds[2].name,
     localParams = {"simulate" : false, "frequency" : 10000};
 
+var oldValue = model.leds["2"].value;
+
 // import { Observable } from 'dist/object-observer.min.js';
 // const observableModel = Observable.from(model.leds["2"]);
 
@@ -24,11 +26,7 @@ var resources = require("./../../resources/model"),
 
 exports.start = function(params) {
     localParams = params;
-    // observableModel.observe(changes => {
-    //     changes.forEach(change => {
-    //         console.log(change);
-    //     });
-    // });
+    poll();
     if(localParams.simulate){
         simulate(); //assuming this is used if you don't have a physical Raspberry Pi
     } else {
@@ -46,13 +44,14 @@ exports.stop = function(){
     console.log("%s plugin stopped!", pluginName);
 };
 
-function observe(myModel){
+function poll(){
     console.log("checking if change detection works");
-    var change = onChange(myModel, function(){
-        console.info("Change detected for %s...", pluginName);
+    if(model.leds["2"].value != oldValue)
+    {
         switchOnOff(model.leds["2"]);
-    });
-    change.value = true;
+        oldValue = model.leds["2"];
+        console.log("New led 2 value: " + oldValue);
+    }
 } 
 
 function switchOnOff(myModel){

@@ -27,8 +27,8 @@ module.exports = function(){
             res.send(req.result);
             return;
         }
-        // else{
-        //     next();
-        // }
+        else{
+            next();
+        }
     }
 };
