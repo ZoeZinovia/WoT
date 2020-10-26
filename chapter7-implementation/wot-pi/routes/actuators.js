@@ -1,7 +1,7 @@
 var express = require("express"),
     router = express.Router(),
     resources = require("./../resources/model"),
-    ledPlugin = require("./plugins/internal/ledPlugin");
+    ledPlugin = require("./../plugins/internal/ledPlugin");
 
 router.route("/").get(function(req, res, next){
     req.result = resources.pi.actuators;
