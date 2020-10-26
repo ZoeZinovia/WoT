@@ -12,7 +12,7 @@ var gpio = require("onoff").Gpio,
 exports.start = function(params) 
 {
     localParams = params;
-    Object.observe(model.leds["2"], function(change){
+    Object.deepObserve(model.leds["2"], function(change){
         console.info(change);
         switchOnOff();
     })
