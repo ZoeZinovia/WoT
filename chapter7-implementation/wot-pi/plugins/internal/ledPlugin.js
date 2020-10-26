@@ -7,7 +7,7 @@ var resources = require("./../../resources/model"),
     pluginName = model.leds[1].name + " & " + model.leds[2].name,
     localParams = {"simulate" : false, "frequency" : 10000};
 
-import { Observable } from 'dist/object-observer.min.js';
+// import { Observable } from 'dist/object-observer.min.js';
 const observableModel = Observable.from(model.leds["2"]);
 
 // var CorePlugin = require('./../corePlugin').CorePlugin,
