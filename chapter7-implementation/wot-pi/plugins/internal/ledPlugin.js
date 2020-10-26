@@ -2,22 +2,15 @@ var resources = require("./../../resources/model"),
     interval,
     model = resources.pi.actuators,
     pluginName = model.leds[1].name + " & " + model.leds[2].name,
-    localParams = {"simulate" : false, "frequency" : 10000},
-    Object = require("proxy-observe");
+    localParams = {"simulate" : false, "frequency" : 10000};
 
 var gpio = require("onoff").Gpio,
     led1 = new gpio(model.leds["1"].gpio, "out"),
     led2 = new gpio(model.leds["2"].gpio, "out");
 
-exports.start = function(params) 
-{
+exports.start = function(params) {
     localParams = params;
-    Object.deepObserve(model.leds["2"], function(change){
-        console.info(change);
-        switchOnOff();
-    })
-    if(localParams.simulate)
-    {
+    if(localParams.simulate){
         simulate(); //assuming this is used if you don't have a physical Raspberry Pi
     } else {
         connectHardware();
@@ -36,6 +29,13 @@ exports.stop = function()
     }
     console.log("%s plugin stopped!", pluginName);
 };
+
+// var objProxy = new Proxy(model.leds["2"],{ 
+//     set: function(target, prop, value) {
+//         console.log({ type: 'set', target, prop, value });
+//         return Reflect.set(target, prop, value);
+//     }
+// });
 
 exports.switchOnOff = function switchOnOff()
 { //This function is called whenever the model is updated
