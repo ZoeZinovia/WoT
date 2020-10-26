@@ -71,6 +71,7 @@ function switchOnOff(myModel){
 function connectHardware(){
     var gpio = require("onoff").Gpio;
     var led1 = new gpio(model.leds["1"].gpio, "out");
+    var led2 = new gpio(myModel.gpio, "out");
     interval = setInterval(function(){
         var value1 = (led1.readSync() + 1)%2;
         var value2 = 1;
