@@ -46,15 +46,15 @@ exports.stop = function(){
     console.log("%s plugin stopped!", pluginName);
 };
 
-function poll(){
-    console.log("checking if change detection works");
-    if(model.leds["2"].value != oldValue)
-    {
-        switchOnOff(model.leds["2"]);
-        oldValue = !oldValue;
-        console.log("New led 2 value: " + oldValue);
-    }
-} 
+// function poll(){
+//     console.log("checking if change detection works");
+//     if(model.leds["2"].value != oldValue)
+//     {
+//         switchOnOff(model.leds["2"]);
+//         oldValue = !oldValue;
+//         console.log("New led 2 value: " + oldValue);
+//     }
+// } 
 
 exports.switchOnOff = function switchOnOff(){
     if(!localParams.simulate){
@@ -65,6 +65,7 @@ exports.switchOnOff = function switchOnOff(){
         led2.write(value2, function(){
             console.log("Changed LED2 state to: " + model.leds["2"].value);
         });
+        oldValue = !oldValue;
     }
 }
 
