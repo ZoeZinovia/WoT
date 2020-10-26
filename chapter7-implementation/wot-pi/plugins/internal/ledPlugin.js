@@ -8,7 +8,7 @@ var resources = require("./../../resources/model"),
     localParams = {"simulate" : false, "frequency" : 10000};
 
 // import { Observable } from 'dist/object-observer.min.js';
-const observableModel = Observable.from(model.leds["2"]);
+// const observableModel = Observable.from(model.leds["2"]);
 
 // var CorePlugin = require('./../corePlugin').CorePlugin,
 //     util = require('util'),
@@ -24,11 +24,11 @@ const observableModel = Observable.from(model.leds["2"]);
 
 exports.start = function(params) {
     localParams = params;
-    observableModel.observe(changes => {
-        changes.forEach(change => {
-            console.log(change);
-        });
-    });
+    // observableModel.observe(changes => {
+    //     changes.forEach(change => {
+    //         console.log(change);
+    //     });
+    // });
     if(localParams.simulate){
         simulate(); //assuming this is used if you don't have a physical Raspberry Pi
     } else {
