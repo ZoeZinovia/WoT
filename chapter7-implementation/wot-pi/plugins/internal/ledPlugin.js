@@ -18,7 +18,10 @@ exports.stop = function(){
     if(localParams.simulate){
         clearInterval(interval);
     } else {
-        sensor.unexport()
+        var led1 = new gpio(model.leds["1"].gpio, "out");
+        var led2 = new gpio(model.leds["2"].gpio, "out");
+        led1.unexport();
+        led2.unexport()
     }
     console.log("%s plugin stopped!", pluginName);
 };
