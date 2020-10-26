@@ -4,9 +4,15 @@ var resources = require("./../../resources/model"),
     pluginName = model.leds[1].name + " & " + model.leds[2].name,
     localParams = {"simulate" : false, "frequency" : 10000};
 
-exports.start = function(params) {
+var gpio = require("onoff").Gpio,
+    led1 = new gpio(model.leds["1"].gpio, "out"),
+    led2 = new gpio(model.leds["2"].gpio, "out");
+
+exports.start = function(params) 
+{
     localParams = params;
-    if(localParams.simulate){
+    if(localParams.simulate)
+    {
         simulate(); //assuming this is used if you don't have a physical Raspberry Pi
     } else {
         connectHardware();
@@ -14,36 +20,38 @@ exports.start = function(params) {
     console.log("%s plugin started!", pluginName)
 };
 
-exports.stop = function(){
-    if(localParams.simulate){
+exports.stop = function()
+{
+    if(localParams.simulate)
+    {
         clearInterval(interval);
     } else {
-        var led1 = new gpio(model.leds["1"].gpio, "out");
-        var led2 = new gpio(model.leds["2"].gpio, "out");
         led1.unexport();
         led2.unexport()
     }
     console.log("%s plugin stopped!", pluginName);
 };
 
-exports.switchOnOff = function switchOnOff(){ //This function is called whenever the model is updated
-    if(!localParams.simulate){
-        var gpio = require("onoff").Gpio;
-        var led2 = new gpio(model.leds["2"].gpio, "out");
+exports.switchOnOff = function switchOnOff()
+{ //This function is called whenever the model is updated
+    if(!localParams.simulate)
+    {
         var value2 = + (model.leds["2"].value);
         console.log("write with value " + value2);
-        led2.write(value2, function(){
+        led2.write(value2, function()
+        {
             console.log("Changed LED2 state to: " + model.leds["2"].value);
         });
     }
 }
 
-function connectHardware(){
-    var gpio = require("onoff").Gpio;
-    var led1 = new gpio(model.leds["1"].gpio, "out");
-    interval = setInterval(function(){
+function connectHardware()
+{
+    interval = setInterval(function()
+    {
         var value1 = (led1.readSync() + 1)%2;
-        led1.write(value1, function(){
+        led1.write(value1, function()
+        {
             console.log("Changed LED1 state to: " + value1);
             model.leds["1"].value = !!value1;
         });
@@ -51,8 +59,10 @@ function connectHardware(){
     console.log("Hardware %s plugin started!", pluginName);
 };
 
-function simulate(){
-    interval = setInterval(function(){
+function simulate()
+{
+    interval = setInterval(function()
+    {
         model.leds["1"].value = !model.leds["1"].value;
         model.leds["2"].value = !model.leds["2"].value;
         showValue();
@@ -60,7 +70,8 @@ function simulate(){
     console.log("Simulated %s plugin started!", pluginName);
 }
 
-function showValue(){
+function showValue()
+{
     console.log("LED 1 value: " + model.leds["1"] + ", LED 2 value: " + model.leds["2"]);
 }
 
