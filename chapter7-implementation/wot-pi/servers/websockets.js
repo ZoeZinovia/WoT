@@ -34,7 +34,7 @@ function selectResouce(url) { //#E
   return result;
 }
 
-module.exports.notify = notify;
+module.exports.notify = notifyChange;
 //#A Create a WebSockets server by passing it the Express server
 //#B Triggered after a protocol upgrade when the client connected
 //#C Register an observer corresponding to the resource in the protocol upgrade URL
