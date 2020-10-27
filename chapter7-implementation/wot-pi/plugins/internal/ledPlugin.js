@@ -4,7 +4,7 @@ var resources = require("./../../resources/model"),
     pluginName = model.leds[1].name + " & " + model.leds[2].name,
     localParams = {"simulate" : false, "frequency" : 10000};
 
-    import { Observable } from './../../utils/object-observer';
+    // import { Observable } from 'dist/object-observer.min.js';
 
 var gpio = require("onoff").Gpio,
     led1 = new gpio(model.leds["1"].gpio, "out"),

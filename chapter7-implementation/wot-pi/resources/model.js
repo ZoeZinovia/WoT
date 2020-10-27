@@ -1,2 +1,4 @@
 var resources = require('./resources.json');
-module.exports = resources;
+var pi = resources.pi;
+console.log(pi.name);
+module.exports = pi;
