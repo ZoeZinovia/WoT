@@ -1,6 +1,6 @@
 var WebSocketServer = require('ws').Server,
     resources = require('./../resources/model').resourceObject,
-    ws;
+    sendMessage;
 
 exports.listen = function(server) {
   var wss = new WebSocketServer({server: server}); //#A
@@ -8,21 +8,20 @@ exports.listen = function(server) {
   wss.on('connection', function (ws) { //#B
     var url = ws.upgradeReq.url;
     console.info(url);
-    // try {
-    //     var observableObject = Observable.from(selectResouce(url));
-    //     observableObject.observe(function(changes) { //#C
-    //       ws.send(JSON.stringify(changes[0].object), function () {
-    //       });
-    //     });
-    //   }
-    //   catch (e) { //#D
-    //     console.log('Unable to observe %s resource!', url);
-    //   };
+    try {
+        if(sendMessage) { //#C
+          ws.send(sendmessage, function () {
+              sendMessage = null;
+          });
+        }
+    } catch (e) { //#D
+        console.log('Unable to observe %s resource!', url);
+      };
   });
 };
 
 function notifyChange(changes){
-    ws.send(JSON.stringify(changes));
+    sendMessage = JSON.stringify(changes);
 }
 
 function selectResouce(url) { //#E
