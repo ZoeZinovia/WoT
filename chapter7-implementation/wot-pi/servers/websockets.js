@@ -1,6 +1,6 @@
 var WebSocketServer = require('ws').Server,
     resources = require('./../resources/model').resourceObject,
-    sendMessage;
+    updates = [];
 
 exports.listen = function(server) {
   var wss = new WebSocketServer({server: server}); //#A
@@ -9,10 +9,14 @@ exports.listen = function(server) {
     var url = ws.upgradeReq.url;
     console.info(url);
     try {
-        if(sendMessage) { //#C
-          ws.send(sendMessage, function () {
-              sendMessage = null;
-          });
+        console.log("updates: ")
+        if(updates.length != 0) { // if updates array is empty, there are no updates for any things
+            if(updates.includes(url)) //if the specific thing from the url request is not in the array, there are no updates
+            {
+                ws.send(updates[updates.lastIndexOf(url)], function () { //send the latest update that matches the url request
+                   updates = updates.filter(a => a !== url); //remove all updates of that "thing" since the latest update has been sent
+                });
+            }
         }
     } catch (e) { //#D
         console.log('Unable to observe %s resource!', url);
@@ -20,8 +24,8 @@ exports.listen = function(server) {
   });
 };
 
-function notifyChange(changes){
-    sendMessage = JSON.stringify(changes);
+function notifyChange(thing){
+    updates = updates.concat(thing);
 }
 
 function selectResouce(url) { //#E
