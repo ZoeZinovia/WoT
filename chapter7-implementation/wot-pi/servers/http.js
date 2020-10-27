@@ -1,7 +1,7 @@
 var express = require("express"),
     actuatorRoutes = require("./../routes/actuators"),
     sensorRoutes = require("./../routes/sensors"),
-    resources = require("./../resources/model"),
+    resources = require("./../resources/model").resourceObject,
     cors = require("cors"),
     bodyParser = require("body-parser"),
     converter = require("./../middleware/converter");

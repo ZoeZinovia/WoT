@@ -1,5 +1,5 @@
 var WebSocketServer = require('ws').Server,
-    resources = require('./../resources/model');
+    resources = require('./../resources/model').resourceObject;
 
 exports.listen = function(server) {
   var wss = new WebSocketServer({server: server}); //#A
@@ -7,18 +7,22 @@ exports.listen = function(server) {
   wss.on('connection', function (ws) { //#B
     var url = ws.upgradeReq.url;
     console.info(url);
-    try {
-      var observableObject = Observable.from(selectResouce(url));
-      observableObject.observe(function(changes) { //#C
-        ws.send(JSON.stringify(changes[0].object), function () {
-        });
-      });
-    }
-    catch (e) { //#D
-      console.log('Unable to observe %s resource!', url);
-    };
+    // try {
+    //     var observableObject = Observable.from(selectResouce(url));
+    //     observableObject.observe(function(changes) { //#C
+    //       ws.send(JSON.stringify(changes[0].object), function () {
+    //       });
+    //     });
+    //   }
+    //   catch (e) { //#D
+    //     console.log('Unable to observe %s resource!', url);
+    //   };
   });
 };
+
+function notify(changes){
+    ws.send(JSON.stringify(changes));
+}
 
 function selectResouce(url) { //#E
   var parts = url.split('/');
@@ -30,6 +34,7 @@ function selectResouce(url) { //#E
   return result;
 }
 
+module.exports.notify = notify;
 //#A Create a WebSockets server by passing it the Express server
 //#B Triggered after a protocol upgrade when the client connected
 //#C Register an observer corresponding to the resource in the protocol upgrade URL

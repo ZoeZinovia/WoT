@@ -1,5 +1,5 @@
 var httpServer = require("./servers/http"),
-    resources = require("./resources/model");
+    resources = require("./resources/model").resourceObject;
 
 var ledPlugin = require("./plugins/internal/ledPlugin"),
     pirPlugin = require("./plugins/internal/pirPlugin"),

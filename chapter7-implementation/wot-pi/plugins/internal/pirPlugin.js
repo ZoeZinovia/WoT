@@ -1,4 +1,5 @@
-var resources = require("./../../resources/model"),
+var resources = require("./../../resources/model").resourceObject,
+    setResource = require("../../resources/model").set, 
     interval,
     sensor,
     model = resources.pi.sensors.pir,
@@ -29,7 +30,7 @@ function connectHardware(){
     sensor.watch(function(err, value){
         if(err)
             exit(err);
-        model.value = !!value;
+        setResource(model, !!value);
         showValue();
     });
     console.log("Hardware %s plugin started!", pluginName);
@@ -37,7 +38,7 @@ function connectHardware(){
 
 function simulate(){
     interval = setInterval(function(){
-        model.value = !model.value;
+        setResource(model, !model.value);
         showValue();
     }, localParams.frequency);
     console.log("Simulated %s plugin started!", pluginName);

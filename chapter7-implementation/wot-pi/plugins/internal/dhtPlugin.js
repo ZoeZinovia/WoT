@@ -1,4 +1,5 @@
-var resources = require("../../resources/model"),
+var resources = require("../../resources/model").resourceObject,
+    setResource = require("../../resources/model").set,
     interval,
     sensor,
     model = resources.pi.sensors,
@@ -31,10 +32,11 @@ function connectHardware(){
         },
         read: function(){
             var readout = sensorDriver.read();
-            model.temperature.value = parseFloat(readout.temperature.toFixed(2));
-            model.humidity.value = parseFloat(readout.humidity.toFixed(2));
+            if(model.temperature.value != readout.temperature.toFixed(2))
+                setResource(model.temperature, parseFloat(readout.temperature.toFixed(2)));
+            if(model.humidity.value != readout.humidity.toFixed(2))
+                setResource(model.humidity, parseFloat(readout.humidity.toFixed(2)));
             showValue();
-
             setTimeout(function(){
                 sensor.read();
             }, localParams.frequency);

@@ -1,10 +1,9 @@
-var resources = require("./../../resources/model"),
+var resources = require("./../../resources/model").resourceObject,
+    setResource = require("../../resources/model").set,
     interval,
     model = resources.pi.actuators,
     pluginName = model.leds[1].name + " & " + model.leds[2].name,
     localParams = {"simulate" : false, "frequency" : 10000};
-
-    // import { Observable } from 'dist/object-observer.min.js';
 
 var gpio = require("onoff").Gpio,
     led1 = new gpio(model.leds["1"].gpio, "out"),
@@ -12,12 +11,6 @@ var gpio = require("onoff").Gpio,
 
 exports.start = function(params) {
     localParams = params;
-    // var observableObject = Observable.from(model.leds["2"]);
-    // observableObject.observe(function(changes) { //#C
-    //     switchOnOff();
-    //     ws.send(JSON.stringify(changes[0].object), function () {
-    //     });
-    // });
     if(localParams.simulate){
         simulate(); //assuming this is used if you don't have a physical Raspberry Pi
     } else {
@@ -45,8 +38,8 @@ exports.stop = function()
 //     }
 // });
 
-exports.switchOnOff = function switchOnOff()
-{ //This function is called whenever the model is updated
+exports.switchOnOff = function switchOnOff()//This function is called whenever the model is updated
+{
     if(!localParams.simulate)
     {
         var value2 = + (model.leds["2"].value);
@@ -66,7 +59,7 @@ function connectHardware()
         led1.write(value1, function()
         {
             console.log("Changed LED1 state to: " + value1);
-            model.leds["1"].value = !!value1;
+            setResource(model.leds["1"], !!value1);
         });
     }, localParams.frequency)
     console.log("Hardware %s plugin started!", pluginName);
@@ -76,8 +69,8 @@ function simulate()
 {
     interval = setInterval(function()
     {
-        model.leds["1"].value = !model.leds["1"].value;
-        model.leds["2"].value = !model.leds["2"].value;
+        setResource(model.leds["1"],!model.leds["1"].value);
+        setResource(model.leds["2"].value, !model.leds["2"].value);
         showValue();
     }, localParams.frequency);
     console.log("Simulated %s plugin started!", pluginName);
