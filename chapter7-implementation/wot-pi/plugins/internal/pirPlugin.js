@@ -30,8 +30,11 @@ function connectHardware(){
     sensor.watch(function(err, value){
         if(err)
             exit(err);
-        setResource(model, !!value);
-        showValue();
+        if(model.value != !!value)
+        {
+            setResource(model, !!value);
+            showValue();
+        }
     });
     console.log("Hardware %s plugin started!", pluginName);
 };
