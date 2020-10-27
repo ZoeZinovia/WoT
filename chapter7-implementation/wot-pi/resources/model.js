@@ -4,12 +4,12 @@ var resourceObject = resources;
 var notifyChange = require("./../servers/websockets").notifyChange;
 console.log(resourceObject.pi.name);
 var set = function(thing, val){
-    resourceObject.thing.value  = val;
-    notifyChange(resourceObject.thing);
+    thing.value  = val;
+    notifyChange(thing);
     console.log("Change made: " + resourceObject.thing);
 }
 var get= function(thing){
-    return resourceObject.thing;
+    return thing;
 }
 module.exports.resourceObject = resourceObject;
 module.exports.set = set;
