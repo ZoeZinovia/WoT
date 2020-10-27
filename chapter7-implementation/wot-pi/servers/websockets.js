@@ -20,7 +20,7 @@ exports.listen = function(server) {
   });
 };
 
-function notify(changes){
+function notifyChange(changes){
     ws.send(JSON.stringify(changes));
 }
 
