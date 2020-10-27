@@ -6,7 +6,7 @@ console.log(resourceObject.pi.name);
 var set = function(thing, val){
     thing.value  = val;
     notifyChange(thing);
-    console.log("Change made: " + resourceObject.thing);
+    console.log("Change made: " + thing);
 }
 var get= function(thing){
     return thing;
