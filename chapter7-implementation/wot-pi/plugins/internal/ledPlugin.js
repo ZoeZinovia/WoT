@@ -12,12 +12,12 @@ var gpio = require("onoff").Gpio,
 
 exports.start = function(params) {
     localParams = params;
-    var observableObject = Observable.from(model.leds["2"]);
-    observableObject.observe(function(changes) { //#C
-        switchOnOff();
-        ws.send(JSON.stringify(changes[0].object), function () {
-        });
-    });
+    // var observableObject = Observable.from(model.leds["2"]);
+    // observableObject.observe(function(changes) { //#C
+    //     switchOnOff();
+    //     ws.send(JSON.stringify(changes[0].object), function () {
+    //     });
+    // });
     if(localParams.simulate){
         simulate(); //assuming this is used if you don't have a physical Raspberry Pi
     } else {
