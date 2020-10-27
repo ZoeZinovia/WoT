@@ -10,7 +10,7 @@ exports.listen = function(server) {
     console.info(url);
     try {
         if(sendMessage) { //#C
-          ws.send(sendmessage, function () {
+          ws.send(sendMessage, function () {
               sendMessage = null;
           });
         }
