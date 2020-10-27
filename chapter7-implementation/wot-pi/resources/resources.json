@@ -21,7 +21,7 @@
             "pir": {
                 "name" : "Passive Infrared",
                 "description" : "Passive infrared sensor that detects whether a living body is near. When the value is true, someone/thing is present.",
-                "value" : true,
+                "value" : false,
                 "gpio" : 17
             }
         },
