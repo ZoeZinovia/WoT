@@ -1,4 +1,5 @@
 var httpServer = require("./servers/http"),
+    wsServer = require("./servers/websockets"),
     resources = require("./resources/model").resourceObject;
 
 var ledPlugin = require("./plugins/internal/ledPlugin"),
@@ -10,6 +11,10 @@ pirPlugin.start({"simulate": false, "frequency" : 10000});
 dhtPlugin.start({"simulate": false, "frequency" : 10000});
 
 var server = httpServer.listen(resources.pi.port, function(){
+    console.log("http server has started");
+    wsServer.listen(server, function(){
+        console.log("Websocket server has started");
+    })
     console.info("The CEOT Pi is up and running on port %s", resources.pi.port);
 });
 
