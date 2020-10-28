@@ -1,5 +1,5 @@
-var resources = require("../../resources/modelWoT").resources,
-    setResource = require("../../resources/modelWoT").set,
+var resources = require("../../resources/model").resources,
+    setResource = require("../../resources/model").set,
     interval,
     model = resources.pi.actuators,
     pluginName = model.leds[1].name + " & " + model.leds[2].name,
