@@ -19,7 +19,7 @@
         <script>
 
             $(document).ready(function(){
-                $.getJSON('http://devices.webofthings.io/pi/sensors/temperature', function (data) { //#C
+                $.getJSON('http://raspberrypi.local:8484/pi/sensors/temperature', function (data) { //#C
                         $('#tempDefaultValue').html(data.value + ' ' + data.unit); //#D
            
                 });
