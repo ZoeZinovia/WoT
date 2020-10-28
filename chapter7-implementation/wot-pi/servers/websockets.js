@@ -36,7 +36,7 @@ function notifyChange(thing){
     var index = updates.map(function(e){return e.name;}).indexOf(thing.name);
     console.log(index);
     console.log(updates);
-    if(index != -1)
+    if(index == -1)
       updates = updates.concat(thing);
     else
       updates[index] = thing;
