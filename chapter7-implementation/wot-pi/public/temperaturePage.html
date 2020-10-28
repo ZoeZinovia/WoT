@@ -14,9 +14,20 @@
     </head>
     <body>
         <H1>Welcome to the Temperature Page</H1>
-        <h2>Temperature Sensor: <span id = "tempValue"></span></h2>
+        <h2>Temperature Sensor: <span id = "tempValue"><span id = "tempDefaultValue"></span></span></h2>
         
         <script>
+
+            $(document).ready(function(){
+                $.getJSON('http://devices.webofthings.io/pi/sensors/temperature', function (data) { //#C
+                        $('#tempDefaultValue').html(data.value + ' ' + data.unit); //#D
+           
+                });
+
+                subscribeToWs('ws://raspberrypi.local:8484/pi/sensors/temperature');
+
+            })
+
             function subscribeToWs(url, msg) {
                 var socket = new WebSocket(url);
         
@@ -28,7 +39,7 @@
                 socket.onmessage = function (event) {
                     var data = JSON.parse(event.data);
                     console.log(data);
-                    $('#tempValue').html(data.value); 
+                    $('#tempValue').html(data.value + " " + data.unit); 
                     alert("Message received");
                 };
                 socket.onerror = function (error) {
@@ -41,11 +52,12 @@
                     }
                 };
             }
+
+            
             //subscribeToWs('ws://localhost:8484/pi/sensors/temperature');
             //subscribeToWs('ws://localhost:8484/things/coapDevice/sensors/co2');
             // subscribeToWs('ws://raspberrypi.local:8484/pi/sensors/pir');
             // subscribeToWs('ws://raspberrypi.local:8484/pi/actuators/leds/1');
-            subscribeToWs('ws://raspberrypi.local:8484/pi/sensors/temperature');
             //subscribeToWs('ws://raspberrypi.local:8484/pi/sensors/humidity');
             //subscribeToWs('ws://wot-pi.local:8484/pi/sensors/pir');
         </script>
