@@ -32,8 +32,11 @@ exports.listen = function(server) {
 };
 
 function notifyChange(thing){
+  console.log(thing.name);
     var index = updates.map(function(e){return e.name;}).indexOf(thing.name);
-    if(~index)
+    console.log(index);
+    console.log(updates);
+    if(index != -1)
       updates = updates.concat(thing);
     else
       updates[index] = thing;
