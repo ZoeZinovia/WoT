@@ -9,22 +9,20 @@ exports.listen = function(server) {
   wss.on('connection', function (ws, req) { //#B
     console.info("successful connection with websocket server. WS: " + ws);
     var url = req.url;
-    console.info("URL: " + url);
-    var thing = selectResouce(url);
-    console.info("THING: " + thing);
-    // try {
-        // console.log(JSON.stringify(updates, null, 2));
-    //     if(updates.length != 0) { // if updates array is empty, there are no updates for any things
-    //         if(updates.includes(url)) //if the specific thing from the url request is not in the array, there are no updates
-    //         {
-    //             ws.send(updates[updates.lastIndexOf(url)], function () { //send the latest update that matches the url request
-    //                updates = updates.filter(a => a !== url); //remove all updates of that "thing" since the latest update has been sent
-    //             });
-    //         }
-    //     }
-    // } catch (e) { //#D
-    //     console.log('Unable to observe %s resource!', url);
-    // };
+    var thingName = selectResouce(url);
+    try {
+        console.log(JSON.stringify(updates, null, 2));
+        if(updates.length != 0) { // if updates array is empty, there are no updates for any things
+            if(updates.filter(e => e.name)) //if the specific thing from the url request is not in the array, there are no updates
+            {
+                ws.send(updates[updates.lastIndexOf(url)], function () { //send the latest update that matches the url request
+                   updates = updates.filter(a => a !== url); //remove all updates of that "thing" since the latest update has been sent
+                });
+            }
+        }
+    } catch (e) { //#D
+        console.log('Unable to observe %s resource!', url);
+    };
   });
 };
 
@@ -35,11 +33,14 @@ function notifyChange(thing){
 function selectResouce(url) { //#E
   var parts = url.split('/');
   parts.shift();
-  // var result = JSON.stringify(resources.pi, null, 2);
-  // for (var i = 0; i < parts.length; i++) {
-  //   result = result[parts[i]];
-  // }
-  return parts[parts.length-1];
+  var result = JSON.stringify(resources.pi, null, 2);
+  console.log("result: " + result);
+  for (var i = 0; i < parts.length; i++) {
+    console.log("adding: " + parts[i]);
+    result = result[parts[i]];
+    console.log("result: " + result);
+  }
+  return result;
 }
 
 module.exports.notifyChange = notifyChange;
