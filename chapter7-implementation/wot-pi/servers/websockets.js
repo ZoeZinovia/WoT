@@ -14,9 +14,11 @@ exports.listen = function(server) {
     try {
         // console.log(JSON.stringify(updates, null, 2));
         if(updates.length != 0) { // if updates array is empty, there are no updates for any things
-            if(updates.filter(e => e.name)) //if the specific thing from the url request is not in the array, there are no updates
+            if(updates.some(e => e.name == thingName)) //if the specific thing from the url request is not in the array, there are no updates
             {
-                ws.send(updates[updates.lastIndexOf(url)], function () { //send the latest update that matches the url request
+              var sendItem = updates.filter(e => e.name == thingName);
+              console.log(sendItem);
+                ws.send(sendItem, function () { //send the latest update that matches the url request
                    updates = updates.filter(a => a !== url); //remove all updates of that "thing" since the latest update has been sent
                 });
             }
