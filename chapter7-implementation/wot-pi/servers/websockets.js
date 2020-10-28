@@ -6,7 +6,6 @@ var resources = require("../resources/modelcopy").resources;
 exports.listen = function(server) {
   var wss = new WebSocketServer({server: server}); //#A
   console.info('WebSocket server started...');
-  console.info(JSON.stringify(resources));
   wss.on('connection', function (ws, req) { //#B
     console.info("successful connection with websocket server. WS: " + ws);
     var url = req.url;
@@ -14,7 +13,7 @@ exports.listen = function(server) {
     var thing = selectResouce(url);
     console.info("THING: " + thing);
     // try {
-        console.log(JSON.stringify(updates, null, 2));
+        // console.log(JSON.stringify(updates, null, 2));
     //     if(updates.length != 0) { // if updates array is empty, there are no updates for any things
     //         if(updates.includes(url)) //if the specific thing from the url request is not in the array, there are no updates
     //         {
@@ -37,11 +36,9 @@ function selectResouce(url) { //#E
   var parts = url.split('/');
   parts.shift();
   var result = JSON.stringify(resources.pi, null, 2);
-  console.info(parts);
-  console.info(resources);
-  // for (var i = 0; i < parts.length; i++) {
-  //   result = result[parts[i]];
-  // }
+  for (var i = 0; i < parts.length; i++) {
+    result = result[parts[i]];
+  }
   return result;
 }
 
