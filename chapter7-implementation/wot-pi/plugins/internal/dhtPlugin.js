@@ -32,8 +32,12 @@ function connectHardware(){
         },
         read: function(){
             var readout = sensorDriver.read();
-            if(model.temperature.value != readout.temperature.toFixed(2))
+            console.log(model.temperature.value);
+            if(model.temperature.value != readout.temperature.toFixed(2)){
                 setResource(model.temperature, parseFloat(readout.temperature.toFixed(2)));
+                console.log(model.temperature.value);
+                console.log(readout.temperature.toFixed(2));
+            }
             if(model.humidity.value != readout.humidity.toFixed(2))
                 setResource(model.humidity, parseFloat(readout.humidity.toFixed(2)));
             showValue();
