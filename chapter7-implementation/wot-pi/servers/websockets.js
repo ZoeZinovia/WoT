@@ -35,11 +35,11 @@ function notifyChange(thing){
 function selectResouce(url) { //#E
   var parts = url.split('/');
   parts.shift();
-  var result = JSON.stringify(resources.pi, null, 2);
-  for (var i = 0; i < parts.length; i++) {
-    result = result[parts[i]];
-  }
-  return result;
+  // var result = JSON.stringify(resources.pi, null, 2);
+  // for (var i = 0; i < parts.length; i++) {
+  //   result = result[parts[i]];
+  // }
+  return parts[parts.length()];
 }
 
 module.exports.notifyChange = notifyChange;
