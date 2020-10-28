@@ -32,7 +32,11 @@ exports.listen = function(server) {
 };
 
 function notifyChange(thing){
-    updates = updates.concat(thing);
+    var index = updates.map(function(e){return e.name;}).indexOf(thing.name);
+    if(~index)
+      updates = updates.concat(thing);
+    else
+      updates[index] = thing;
 }
 
 function selectResouce(url) { //#E
