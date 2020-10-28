@@ -1,6 +1,5 @@
 var WebSocketServer = require('ws').Server,
     resources = require("./../resources/model").resourceObject,
-    model = resources.pi.actuators.leds[1],
     updates = [];
 
 exports.listen = function(server) {

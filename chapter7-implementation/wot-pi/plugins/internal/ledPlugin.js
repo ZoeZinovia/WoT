@@ -10,6 +10,7 @@ var gpio = require("onoff").Gpio,
     led2 = new gpio(model.leds["2"].gpio, "out");
 
 exports.start = function(params) {
+    console.info(resources.pi.actuators.leds[1].name);
     localParams = params;
     if(localParams.simulate){
         simulate(); //assuming this is used if you don't have a physical Raspberry Pi
