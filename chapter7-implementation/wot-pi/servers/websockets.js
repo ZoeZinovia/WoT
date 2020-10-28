@@ -9,9 +9,10 @@ exports.listen = function(server) {
   wss.on('connection', function (ws, req) { //#B
     console.info("successful connection with websocket server. WS: " + ws);
     var url = req.url;
-    var thingName = selectResouce(url);
+    var thingName = selectResouce(url).name;
+    console.log(thingName);
     try {
-        console.log(JSON.stringify(updates, null, 2));
+        // console.log(JSON.stringify(updates, null, 2));
         if(updates.length != 0) { // if updates array is empty, there are no updates for any things
             if(updates.filter(e => e.name)) //if the specific thing from the url request is not in the array, there are no updates
             {
