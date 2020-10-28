@@ -18,16 +18,16 @@
         
         <script>
 
-            var url = pi/sensors/pir;
+            var url = "raspberrypi.local:8484/pi/sensors/pir";
             var urlArray = url.split("/");
             $(document).ready(function(){
-                $.getJSON('http://devices.webofthings.io/' + url, function (data) { //#C
+                $.getJSON('http://' + url, function (data) { //#C
                     $('#header').html(urlArray[urlArray.length-1]);
                     $('#sensorName').html(data.name + ": ");
                     $('#defaultValue').html(data.value + " " + data.unit); 
                 });
 
-                subscribeToWs('ws://raspberrypi.local:8484/' + url);
+                subscribeToWs('ws://' + url);
             })
 
             function subscribeToWs(url, msg) {
