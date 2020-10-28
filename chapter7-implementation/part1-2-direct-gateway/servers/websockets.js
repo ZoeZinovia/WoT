@@ -8,6 +8,7 @@ exports.listen = function(server) {
     var url = ws.upgradeReq.url;
     console.info(url);
     try {
+      console.log(selectResouce(url));
       Object.observe(selectResouce(url), function (changes) { //#C
         ws.send(JSON.stringify(changes[0].object), function () {
         });
