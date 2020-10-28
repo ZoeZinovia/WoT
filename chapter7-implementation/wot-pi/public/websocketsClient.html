@@ -11,7 +11,7 @@
 
         socket.onmessage = function (event) {
             console.log(JSON.parse(event.data));
-            alert("Message received: \n" + event.msg);
+            alert("Message received: \n" + event.data);
         };
         socket.onerror = function (error) {
             console.log('An error occurred while trying to connect to a Websocket!');
