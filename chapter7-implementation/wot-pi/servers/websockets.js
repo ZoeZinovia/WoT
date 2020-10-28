@@ -40,7 +40,9 @@ function selectResouce(url) { //#E
   parts.shift();
   var result = resources;
   for (var i = 0; i < parts.length; i++) {
+    console.log(parts[i]);
     result = result[parts[i]];
+    console.log(result);
   }
   return result;
 }
