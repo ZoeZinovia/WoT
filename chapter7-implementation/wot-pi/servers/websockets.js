@@ -25,6 +25,7 @@ exports.listen = function(server) {
         }
     } catch (e) { //#D
         console.log('Unable to observe %s resource!', url);
+        console.log(e);
     };
   });
 };
