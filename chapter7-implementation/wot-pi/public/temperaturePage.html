@@ -14,7 +14,7 @@
     </head>
     <body>
         <H1>Welcome to the Temperature Page</H1>
-        <h3 id = "tempName"> </h3>
+        <h2>Temperature Sensor: <span id = "tempValue"></span></h2>
         
         <script>
             function subscribeToWs(url, msg) {
@@ -28,7 +28,7 @@
                 socket.onmessage = function (event) {
                     var data = JSON.parse(event.data);
                     console.log(data);
-                    $('#tempName').html(data.name); 
+                    $('#tempValue').html(data.value); 
                     alert("Message received");
                 };
                 socket.onerror = function (error) {
