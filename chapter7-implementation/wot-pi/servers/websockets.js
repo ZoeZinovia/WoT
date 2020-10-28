@@ -34,7 +34,7 @@ function notifyChange(thing){
 function selectResouce(url) { //#E
   var parts = url.split('/');
   parts.shift();
-  var result = resources;
+  var result = JSON.stringify(resources.pi, null, 2);
   console.info(parts);
   console.info(resources);
   // for (var i = 0; i < parts.length; i++) {
