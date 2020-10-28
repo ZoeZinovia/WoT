@@ -5,7 +5,7 @@ var WebSocketServer = require('ws').Server,
 exports.listen = function(server) {
   var wss = new WebSocketServer({server: server}); //#A
   console.info('WebSocket server started...');
-  console.info(model);
+  console.info(resources);
   wss.on('connection', function (ws, req) { //#B
     console.info("successful connection with websocket server. WS: " + ws);
     var url = req.url;
