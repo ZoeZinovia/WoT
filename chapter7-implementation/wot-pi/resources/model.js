@@ -1,5 +1,5 @@
 var resources = require('./resources.json');
-var notifyChange = require("./../servers/websockets").notifyChange;
+var notifyChange = require("../servers/websockets").notifyChange;
 
 var set = function(thing, val){
     thing.value  = val;
