@@ -5,23 +5,23 @@ var WebSocketServer = require('ws').Server,
 exports.listen = function(server) {
   var wss = new WebSocketServer({server: server}); //#A
   console.info('WebSocket server started...');
-  wss.on('connection', function (ws) { //#B
-    var url = ws.upgradeReq.url;
-    console.info(url);
-    try {
-        console.log("updates: ")
-        if(updates.length != 0) { // if updates array is empty, there are no updates for any things
-            if(updates.includes(url)) //if the specific thing from the url request is not in the array, there are no updates
-            {
-                ws.send(updates[updates.lastIndexOf(url)], function () { //send the latest update that matches the url request
-                   updates = updates.filter(a => a !== url); //remove all updates of that "thing" since the latest update has been sent
-                });
-            }
-        }
-    } catch (e) { //#D
-        console.log('Unable to observe %s resource!', url);
-      };
-  });
+  // wss.on('connection', function (ws) { //#B
+  //   var url = ws.upgradeReq.url;
+  //   console.info(url);
+  //   try {
+  //       console.log("updates: ")
+  //       if(updates.length != 0) { // if updates array is empty, there are no updates for any things
+  //           if(updates.includes(url)) //if the specific thing from the url request is not in the array, there are no updates
+  //           {
+  //               ws.send(updates[updates.lastIndexOf(url)], function () { //send the latest update that matches the url request
+  //                  updates = updates.filter(a => a !== url); //remove all updates of that "thing" since the latest update has been sent
+  //               });
+  //           }
+  //       }
+  //   } catch (e) { //#D
+  //       console.log('Unable to observe %s resource!', url);
+  //     };
+  // });
 };
 
 function notifyChange(thing){
