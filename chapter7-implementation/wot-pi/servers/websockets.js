@@ -35,9 +35,11 @@ function selectResouce(url) { //#E
   var parts = url.split('/');
   parts.shift();
   var result = resources;
-  for (var i = 0; i < parts.length; i++) {
-    result = result[parts[i]];
-  }
+  console.info(parts);
+  console.info(resources);
+  // for (var i = 0; i < parts.length; i++) {
+  //   result = result[parts[i]];
+  // }
   return result;
 }
 
