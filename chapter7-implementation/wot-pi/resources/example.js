@@ -1,4 +1,4 @@
-var exampleObject = require('./resources.json');
+var resources = require('./resources.json');
 var notifyChange = require("./../servers/websockets").notifyChange;
 
 var set = function(thing, val){
@@ -10,6 +10,6 @@ var get= function(thing){
     return thing;
 }
 
-module.exports.exampleObject = exampleObject;
+module.exports.resources = resources;
 module.exports.set = set;
 module.exports.get = get;
