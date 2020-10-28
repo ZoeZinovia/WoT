@@ -10,7 +10,7 @@ exports.listen = function(server) {
     console.info("successful connection with websocket server. WS: " + ws);
     var url = req.url;
     var thingName = selectResouce(url).name;
-    console.log(thingName);
+    console.log("Thing name: " + thingName);
     try {
         // console.log(JSON.stringify(updates, null, 2));
         if(updates.length != 0) { // if updates array is empty, there are no updates for any things
@@ -35,11 +35,8 @@ function selectResouce(url) { //#E
   var parts = url.split('/');
   parts.shift();
   var result = resources;
-  console.log(resources["pi"]["actuators"]);
   for (var i = 0; i < parts.length; i++) {
-    console.log("adding: " + parts[i]);
     result = result[parts[i]];
-    console.log("result: " + result);
   }
   return result;
 }
