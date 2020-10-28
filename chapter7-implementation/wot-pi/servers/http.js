@@ -8,6 +8,8 @@ var express = require("express"),
 
 var app  = express();
 
+console.info(resources);
+
 app.use(bodyParser.json());
 
 app.use(cors());
