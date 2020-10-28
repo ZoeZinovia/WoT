@@ -10,7 +10,7 @@
         };
 
         socket.onmessage = function (event) {
-            console.log(event.data);
+            console.log(JSON.parse(event.data));
             alert("Message received: \n" + event.msg);
         };
         socket.onerror = function (error) {
