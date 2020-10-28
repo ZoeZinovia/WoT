@@ -1,6 +1,6 @@
 var express = require("express"),
     router = express.Router(),
-    resources = require("../resources/model").resourceObject;
+    resources = require("../resources/model").resources;
 
 router.route("/").get(function(req, res, next){
     req.result = resources.pi.sensors;
