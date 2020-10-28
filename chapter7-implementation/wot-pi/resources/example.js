@@ -1,7 +1,3 @@
-var exampleObject = {
-    name: "John",
-    lastName: "Smith",
-    dog: "Jack the Jack Russel"
-};
+var exampleObject = require("./resources.json");
 
 module.exports.exampleObject = exampleObject;
