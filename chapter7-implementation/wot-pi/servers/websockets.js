@@ -34,12 +34,14 @@ function notifyChange(thing){
 
 function selectResouce(url) { //#E
   var parts = url.split('/');
+  console.log(parts);
   parts.shift();
+  console.log(parts);
   // var result = JSON.stringify(resources.pi, null, 2);
   // for (var i = 0; i < parts.length; i++) {
   //   result = result[parts[i]];
   // }
-  return parts[parts.length()];
+  return parts;
 }
 
 module.exports.notifyChange = notifyChange;
