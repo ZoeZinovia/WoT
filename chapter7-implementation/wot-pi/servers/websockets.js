@@ -1,16 +1,17 @@
 var WebSocketServer = require('ws').Server,
-    resources = require('./../resources/model').resourceObject,
+    resources = require("./../resources/model").resourceObject,
     updates = [];
 
 exports.listen = function(server) {
   var wss = new WebSocketServer({server: server}); //#A
   console.info('WebSocket server started...');
+  console.info(resources);
   wss.on('connection', function (ws, req) { //#B
     console.info("successful connection with websocket server. WS: " + ws);
     var url = req.url;
     console.info("URL: " + url);
-    var thing = selectResouce(url);
-    console.info("THING: " + thing);
+    // var thing = selectResouce(url);
+    // console.info("THING: " + thing);
     // try {
         console.log(JSON.stringify(updates, null, 2));
     //     if(updates.length != 0) { // if updates array is empty, there are no updates for any things
