@@ -5,9 +5,10 @@ var WebSocketServer = require('ws').Server,
 exports.listen = function(server) {
   var wss = new WebSocketServer({server: server}); //#A
   console.info('WebSocket server started...');
-  wss.on('connection', function (ws) { //#B
+  wss.on('connection', function (ws, req) { //#B
     console.info("successful connection with websocket server. WS: " + ws);
-    // var url = ws.upgradeReq.url;
+    var url = req.url;
+    console.info("URL: " + url)
     // console.info(url);
     // try {
     //     console.log("updates: " + updates)
