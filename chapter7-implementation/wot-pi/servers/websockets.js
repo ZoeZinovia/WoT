@@ -17,7 +17,7 @@ exports.listen = function(server) {
                 var sendItem = updates.filter(e => e.name == thingName);
                   ws.send(JSON.stringify(sendItem[sendItem.length - 1]), function () { //send the latest update that matches the url request
                       updates = updates.filter(a => a !== url); //remove all updates of that "thing" since the latest update has been sent
-                      console.log("message sent from websocket");
+                      console.log("message sent from websocket: " + JSON.stringify(sendItem[sendItem.length - 1]));
                     });
               }
           }
