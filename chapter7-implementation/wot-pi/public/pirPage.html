@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    </head>
+    <body>
+        <H1>Welcome to the <span id = "header"></span> Page</H1>
+        <h2><span id = "sensorName"></span><span id = "value"><span id = "defaultValue"></span></span></h2>
+        
+        <script>
+
+            var url = pi/sensors/pir;
+            var urlArray = url.split("/");
+            $(document).ready(function(){
+                $.getJSON('http://devices.webofthings.io/' + url, function (data) { //#C
+                    $('#header').html(urlArray[urlArray.length-1]);
+                    $('#sensorName').html(data.name + ": ");
+                    $('#defaultValue').html(data.value + " " + data.unit); 
+                });
+
+                subscribeToWs('ws://raspberrypi.local:8484/' + url);
+            })
+
+            function subscribeToWs(url, msg) {
+                var socket = new WebSocket(url);
+        
+                socket.onopen = function(){
+                    socket.send("Hi from the client side websocket");
+                    alert("message sent");
+                };
+        
+                socket.onmessage = function (event) {
+                    var data = JSON.parse(event.data);
+                    console.log(data);
+                    $('#value').html(data.value + " " + data.unit); 
+                    alert("Message received");
+                };
+                socket.onerror = function (error) {
+                    console.log('An error occurred while trying to connect to a Websocket!');
+                    console.log(error);
+                };
+                socket.onopen = function (event) {
+                    if (msg) {
+                        socket.send(msg);
+                    }
+                };
+            }
+
+            
+            //subscribeToWs('ws://localhost:8484/pi/sensors/temperature');
+            //subscribeToWs('ws://localhost:8484/things/coapDevice/sensors/co2');
+            // subscribeToWs('ws://raspberrypi.local:8484/pi/sensors/pir');
+            // subscribeToWs('ws://raspberrypi.local:8484/pi/actuators/leds/1');
+            //subscribeToWs('ws://raspberrypi.local:8484/pi/sensors/humidity');
+            //subscribeToWs('ws://wot-pi.local:8484/pi/sensors/pir');
+        </script>
+    </body>
+</html>
