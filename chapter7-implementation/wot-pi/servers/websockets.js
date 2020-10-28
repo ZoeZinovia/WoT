@@ -1,6 +1,6 @@
 var WebSocketServer = require('ws').Server,
-    resources = require("./../resources/model").resourceObject,
-    model = resources.pi;
+    resources = require("./../../resources/model").resourceObject,
+    model = resources.pi,
     updates = [];
 
 exports.listen = function(server) {
