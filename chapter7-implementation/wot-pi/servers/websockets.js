@@ -31,11 +31,8 @@ exports.listen = function(server) {
   });
 };
 
-function notifyChange(thing){
-  console.log(thing.name);
+function notifyChange(thing){ //this function adds an update element if there is no exisitng element in the "updates" array or replaces the previous update if there is already such an element.
     var index = updates.map(function(e){return e.name;}).indexOf(thing.name);
-    console.log(index);
-    console.log(updates);
     if(index == -1)
       updates = updates.concat(thing);
     else
