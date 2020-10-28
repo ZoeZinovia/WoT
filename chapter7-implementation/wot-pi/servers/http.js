@@ -1,14 +1,12 @@
 var express = require("express"),
     actuatorRoutes = require("./../routes/actuators"),
     sensorRoutes = require("./../routes/sensors"),
-    resources = require("./../resources/model").resourceObject,
+    resources = require("./../resources/model").resources,
     cors = require("cors"),
     bodyParser = require("body-parser"),
     converter = require("./../middleware/converter");
 
 var app  = express();
-
-console.info(resources);
 
 app.use(bodyParser.json());
 

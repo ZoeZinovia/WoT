@@ -1,4 +1,4 @@
-var resources = require("./../../resources/model").resourceObject,
+var resources = require("./../../resources/model").resources,
     setResource = require("../../resources/model").set,
     interval,
     model = resources.pi.actuators,
