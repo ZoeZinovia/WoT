@@ -9,7 +9,8 @@ exports.listen = function(server) {
     console.info("successful connection with websocket server. WS: " + ws);
     var url = req.url;
     console.info("URL: " + url)
-    // console.info(url);
+    var thing = selectResouce(url);
+    console.info("THING: " + thing);
     // try {
     //     console.log("updates: " + updates)
     //     if(updates.length != 0) { // if updates array is empty, there are no updates for any things
