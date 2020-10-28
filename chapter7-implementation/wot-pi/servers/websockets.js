@@ -33,11 +33,11 @@ function notifyChange(thing){
 function selectResouce(url) { //#E
   var parts = url.split('/');
   parts.shift();
-  var result = JSON.stringify(resources.pi, null, 2);
+  var result = JSON.stringify(resources, null, 2);
   console.log(resources.pi);
   for (var i = 0; i < parts.length; i++) {
     console.log("adding: " + parts[i]);
-    result = result.parts[i];
+    result = result[parts[i]];
     console.log("result: " + result);
   }
   return result;
