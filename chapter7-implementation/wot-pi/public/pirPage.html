@@ -1,8 +1,4 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
     <head>
         <meta charset="utf-8">
@@ -21,10 +17,10 @@
             var url = "raspberrypi.local:8484/pi/sensors/pir";
             var urlArray = url.split("/");
             $(document).ready(function(){
-                $.getJSON('http://' + url, function (data) { //#C
+                $.getJSON('http://' + url, function (data) {
                     $('#header').html(urlArray[urlArray.length-1]);
                     $('#sensorName').html(data.name + ": ");
-                    $('#defaultValue').html(data.value + " " + data.unit); 
+                    $('#defaultValue').html(data.value + " " + data.unit? data.unit : ""); 
                 });
 
                 subscribeToWs('ws://' + url);
@@ -53,9 +49,7 @@
                         socket.send(msg);
                     }
                 };
-            }
-
-            
+            }            
             //subscribeToWs('ws://localhost:8484/pi/sensors/temperature');
             //subscribeToWs('ws://localhost:8484/things/coapDevice/sensors/co2');
             // subscribeToWs('ws://raspberrypi.local:8484/pi/sensors/pir');
