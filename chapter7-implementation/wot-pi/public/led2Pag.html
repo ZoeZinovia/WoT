@@ -18,9 +18,9 @@
             var urlArray = url.split("/");
             $(document).ready(function(){
                 $.getJSON('http://' + url, function (data) {
-                    $('#header').html(urlArray[urlArray.length-1]);
                     var prefix = url.includes("leds")? "LED ": "";
-                    $('#sensorName').html(prefix + data.name + ": ");
+                    $('#header').html(prefix + urlArray[urlArray.length-1]);
+                    $('#sensorName').html(data.name + ": ");
                     var unitName = data.unit? data.unit : "";
                     $('#defaultValue').html(data.value + " " + unitName); 
                 });
