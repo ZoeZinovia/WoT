@@ -1,8 +1,4 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
     <head>
         <meta charset="utf-8">
@@ -13,19 +9,22 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     </head>
     <body>
-        <H1>Welcome to the Temperature Page</H1>
-        <h2>Temperature Sensor: <span id = "tempValue"><span id = "tempDefaultValue"></span></span></h2>
+        <H1>Welcome to the <span id = "header" style = "text-transform: uppercase;"></span> Page</H1>
+        <h2><span id = "sensorName"></span><span id = "value"><span id = "defaultValue"></span></span></h2>
         
         <script>
 
+            var url = "raspberrypi.local:8484/pi/sensors/temperature";
+            var urlArray = url.split("/");
             $(document).ready(function(){
-                $.getJSON('http://raspberrypi.local:8484/pi/sensors/temperature', function (data) { //#C
-                        $('#tempDefaultValue').html(data.value + ' ' + data.unit); //#D
-           
+                $.getJSON('http://' + url, function (data) {
+                    $('#header').html(urlArray[urlArray.length-1]);
+                    $('#sensorName').html(data.name + ": ");
+                    var unitName = data.unit? data.unit : "";
+                    $('#defaultValue').html(data.value + " " + unitName); 
                 });
 
-                subscribeToWs('ws://raspberrypi.local:8484/pi/sensors/temperature');
-
+                subscribeToWs('ws://' + url);
             })
 
             function subscribeToWs(url, msg) {
@@ -39,7 +38,8 @@
                 socket.onmessage = function (event) {
                     var data = JSON.parse(event.data);
                     console.log(data);
-                    $('#tempValue').html(data.value + " " + data.unit); 
+                    var unitName = data.unit? data.unit : "";
+                    $('#value').html(data.value + " " + unitName); 
                     alert("Message received");
                 };
                 socket.onerror = function (error) {
@@ -51,9 +51,7 @@
                         socket.send(msg);
                     }
                 };
-            }
-
-            
+            }            
             //subscribeToWs('ws://localhost:8484/pi/sensors/temperature');
             //subscribeToWs('ws://localhost:8484/things/coapDevice/sensors/co2');
             // subscribeToWs('ws://raspberrypi.local:8484/pi/sensors/pir');

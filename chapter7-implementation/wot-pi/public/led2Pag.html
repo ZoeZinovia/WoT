@@ -14,7 +14,7 @@
         
         <script>
 
-            var url = "raspberrypi.local:8484/pi/sensors/pir";
+            var url = "raspberrypi.local:8484/pi/actuators/leds/2";
             var urlArray = url.split("/");
             $(document).ready(function(){
                 $.getJSON('http://' + url, function (data) {
