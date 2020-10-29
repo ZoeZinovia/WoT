@@ -20,7 +20,8 @@
                 $.getJSON('http://' + url, function (data) {
                     $('#header').html(urlArray[urlArray.length-1]);
                     $('#sensorName').html(data.name + ": ");
-                    $('#defaultValue').html(data.value + " " + data.unit? data.unit : ""); 
+                    var unitName = data.unit? data.unit : "";
+                    $('#defaultValue').html(data.value + " " + unitName); 
                 });
 
                 subscribeToWs('ws://' + url);
