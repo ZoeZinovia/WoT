@@ -10,7 +10,7 @@ var express = require("express"),
     });
 
     router.route("/leds/:id").get(function(req, res, next){
-        res.sendFile(path.join(__dirname+"./../public/led" + req.params.id + "page.html"));
+        res.sendFile(path.join(__dirname+"./../public/led" + req.params.id + "Page.html"));
         next();
     });
 
