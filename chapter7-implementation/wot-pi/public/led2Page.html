@@ -64,7 +64,7 @@
 					dataType: 'json',
 					type: 'post',
 					contentType: 'application/json',
-					data: JSON.stringify({"value": $('#putValue').val()}), 
+					data: JSON.stringify({"value": $('#putValue').val() == "true" ? true: false}), 
 					processData: false,
 					// success: function( data, textStatus, jQxhr ){
 					// 	$('#response pre').html( JSON.stringify( data ) ); 
