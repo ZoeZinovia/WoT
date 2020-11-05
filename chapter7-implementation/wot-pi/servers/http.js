@@ -22,7 +22,7 @@ app.get("/pi", function(req, res){
     res.send("Welcome to CEOT Raspberry Pi")
 });
 
-// app.use("/UI/pi/actuators", actuatorRoutesUI);
+app.use("/UI/pi/actuators", actuatorRoutesUI);
 // app.use("/UI/pi/sensors", sensorRoutesUI);
 
 app.get("/UI/pi", function(req, res){
@@ -33,9 +33,6 @@ app.get("/UI/pi/sensors", function(req, res){
     res.sendFile(path.join(__dirname+"./../public/sensorsPage.html"));
 });
 
-app.get("/UI/pi/actuators", function(req, res){
-    res.sendFile(path.join(__dirname+"./../public/actuatorsPage.html"));
-});
 
 app.get("/UI/pi/sensors/humidity", function(req, res){
     res.sendFile(path.join(__dirname+"./../public/humidityPage.html"));
@@ -47,10 +44,6 @@ app.get("/UI/pi/sensors/temperature", function(req, res){
 
 app.get("/UI/pi/sensors/pir", function(req, res){
     res.sendFile(path.join(__dirname+"./../public/pirPage.html"));
-});
-
-app.get("/UI/pi/actuators/leds/:id", function(req, res){
-    res.sendFile(path.join(__dirname+"./../public/led" + req.params.id + "page.html"));
 });
 
 app.use(converter());
