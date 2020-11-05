@@ -2,7 +2,8 @@ var express = require("express"),
     router = express.Router(),
     resources = require("../resources/model").resources,
     setResource = require("../resources/model").set,
-    ledPlugin = require("./../plugins/internal/ledPlugin");
+    ledPlugin = require("./../plugins/internal/ledPlugin"),
+    path = require("path");
 
     router.route("/").get(function(req, res, next){
         res.sendFile(path.join(__dirname+"./../public/actuatorsPage.html"));
