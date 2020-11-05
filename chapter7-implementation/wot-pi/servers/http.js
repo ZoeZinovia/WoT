@@ -18,10 +18,6 @@ app.use(cors());
 app.use("/pi/actuators", actuatorRoutes);
 app.use("/pi/sensors", sensorRoutes);
 
-app.get("/pi", function(req, res){
-    res.send("Welcome to CEOT Raspberry Pi")
-});
-
 app.use("/UI/pi/actuators", actuatorRoutesUI);
 // app.use("/UI/pi/sensors", sensorRoutesUI);
 
