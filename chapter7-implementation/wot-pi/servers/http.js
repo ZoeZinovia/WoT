@@ -6,7 +6,8 @@ var express = require("express"),
     bodyParser = require("body-parser"),
     converter = require("./../middleware/converter"),
     actuatorRoutesUI = require("./../routes/actuatorsUI"),
-    sensorRoutesUI = require("./../routes/sensorsUI");
+    sensorRoutesUI = require("./../routes/sensorsUI"),
+    path = require("path");
 
 var app  = express();
 
@@ -25,7 +26,7 @@ app.get("/pi", function(req, res){
 // app.use("/UI/pi/sensors", sensorRoutesUI);
 
 app.get("/UI/pi", function(req, res){
-    res.sendFile("./../public/pi.html");
+    res.sendFile(path.join(__dirname+"./../public/pi.html"));
     // res.send("User Interface Page");
 });
 
