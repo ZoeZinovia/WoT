@@ -12,7 +12,7 @@
         <H1>Welcome to the <span id = "header" style = "text-transform: uppercase;"></span> Page</H1>
         <h2><span id = "sensorName"></span><span id = "value"><span id = "defaultValue"></span></span></h2>
         <hr>
-        <form id = "message-form" action = "http://raspberrypi.local:8484/pi/actuators/leds/2" method = "POST">
+        <form id = "message-form" action = "http://raspberrypi.local:8484/pi/actuators/leds/2?_method=PUT" method = "POST">
             <button name="led2Switch" type = "submit">Switch LED 2</button>
         </form>
         
