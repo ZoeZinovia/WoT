@@ -33,6 +33,10 @@ app.get("/UI/pi/sensors", function(req, res){
     res.sendFile(path.join(__dirname+"./../public/sensorsPage.html"));
 });
 
+app.get("/UI/pi/actuators", function(req, res){
+    res.sendFile(path.join(__dirname+"./../public/actuatorsPage.html"));
+});
+
 app.get("/UI/pi/sensors/humidity", function(req, res){
     res.sendFile(path.join(__dirname+"./../public/humidityPage.html"));
 });
