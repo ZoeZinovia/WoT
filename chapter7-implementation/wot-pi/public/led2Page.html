@@ -16,10 +16,6 @@
             <input class = "form-group" type = "text" id = "putValue" name = "putValue" placeholder = "bool">
             <button type = "submit">Switch LED 2</button>
         </form>
-        <!-- <div id="response"> 
-			<pre></pre> 
-		</div>  -->
-        
         <script>
             var url = "raspberrypi.local:8484/pi/actuators/leds/2";
             var urlArray = url.split("/");
@@ -65,13 +61,10 @@
 				$.ajax({ 
 					url: "http://raspberrypi.local:8484/pi/actuators/leds/2",
 					dataType: 'json',
-                    type: 'post',
+                    type: 'put',
 					contentType: 'application/json',
 					data: JSON.stringify({"value": $('#putValue').val() == "true" ? true: false}), 
 					processData: false,
-					success: function( data, textStatus, jQxhr ){
-						$('#response pre').html( JSON.stringify( data ) ); 
-					},
 					error: function( jqXhr, textStatus, errorThrown ){//#G 
                         console.log( errorThrown ); 
                     },
