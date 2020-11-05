@@ -29,6 +29,14 @@ app.get("/UI/pi", function(req, res){
     res.sendFile(path.join(__dirname+"./../public/pi.html"));
 });
 
+app.get("/UI/pi/sensors", function(req, res){
+    res.sendFile(path.join(__dirname+"./../public/sensors.html"));
+});
+
+app.get("/UI/pi/actuators", function(req, res){
+    res.sendFile(path.join(__dirname+"./../public/actuators.html"));
+});
+
 app.get("/UI/pi/sensors/humidity", function(req, res){
     res.sendFile(path.join(__dirname+"./../public/humidityPage.html"));
 });
