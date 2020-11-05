@@ -14,4 +14,6 @@ var express = require("express"),
         next();
     });
 
+module.exports = router;
+
    
