@@ -16,6 +16,9 @@
             <input class = "form-group" type = "text" id = "putValue" name = "putValue" placeholder = "bool">
             <button type = "submit">Switch LED 2</button>
         </form>
+        <div id="response"> 
+			<pre></pre> 
+		</div> 
         
         <script>
             var url = "raspberrypi.local:8484/pi/actuators/leds/2";
@@ -70,8 +73,12 @@
 						$('#response pre').html( JSON.stringify( data ) ); 
 					},
 					error: function( jqXhr, textStatus, errorThrown ){//#G 
-						console.log( errorThrown ); 
-					} 
+                        console.log( errorThrown ); 
+                    },
+                    complete:function(){
+                        $('#message-form').each(function(){
+                            this.reset();   //Here form fields will be cleared.
+                        }); 
 				}); 
 				e.preventDefault(); } 
 				$('#message-form').submit( processForm );
