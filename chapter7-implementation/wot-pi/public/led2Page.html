@@ -62,16 +62,16 @@
 				$.ajax({ 
 					url: "http://raspberrypi.local:8484/pi/actuators/leds/2",
 					dataType: 'json',
-					type: 'post',
+                    type: 'post',
 					contentType: 'application/json',
 					data: JSON.stringify({"value": $('#putValue').val() == "true" ? true: false}), 
 					processData: false,
-					// success: function( data, textStatus, jQxhr ){
-					// 	$('#response pre').html( JSON.stringify( data ) ); 
-					// },
-					// error: function( jqXhr, textStatus, errorThrown ){//#G 
-					// 	console.log( errorThrown ); 
-					// } 
+					success: function( data, textStatus, jQxhr ){
+						$('#response pre').html( JSON.stringify( data ) ); 
+					},
+					error: function( jqXhr, textStatus, errorThrown ){//#G 
+						console.log( errorThrown ); 
+					} 
 				}); 
 				e.preventDefault(); } 
 				$('#message-form').submit( processForm );
