@@ -13,7 +13,7 @@
         <h2><span id = "sensorName"></span><span id = "value"><span id = "defaultValue"></span></span></h2>
         <hr>
         <form id = "message-form" class = "form-group">
-            <input class = "form-group" type = "text" id = "value" name = "value" placeholder = "bool">
+            <input class = "form-group" type = "text" id = "putValue" name = "putValue" placeholder = "bool">
             <button type = "submit">Switch LED 2</button>
         </form>
         
@@ -64,7 +64,7 @@
 					dataType: 'json',
 					type: 'post',
 					contentType: 'application/json',
-					data: JSON.stringify({"value": true}), 
+					data: JSON.stringify({"value": $('#putValue').val()}), 
 					processData: false,
 					// success: function( data, textStatus, jQxhr ){
 					// 	$('#response pre').html( JSON.stringify( data ) ); 
