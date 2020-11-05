@@ -24,7 +24,6 @@
                     var unitName = data.unit? data.unit : "";
                     $('#defaultValue').html(data.value + " " + unitName); 
                 });
-
                 subscribeToWs('ws://' + url);
             })
 
