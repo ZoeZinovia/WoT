@@ -25,8 +25,8 @@ app.get("/pi", function(req, res){
 // app.use("/UI/pi/sensors", sensorRoutesUI);
 
 app.get("/UI/pi", function(req, res){
-    // res.render("./../public/pi.html");
-    res.send("User Interface Page");
+    res.sendFile("./../public/pi.html");
+    // res.send("User Interface Page");
 });
 
 app.use(converter());
