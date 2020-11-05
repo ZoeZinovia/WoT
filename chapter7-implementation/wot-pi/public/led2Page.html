@@ -12,9 +12,9 @@
         <H1>Welcome to the <span id = "header" style = "text-transform: uppercase;"></span> Page</H1>
         <h2><span id = "sensorName"></span><span id = "value"><span id = "defaultValue"></span></span></h2>
         <hr>
-        <form class = "form-group" action = "http://raspberrypi.local:8484/pi/actuators/leds/2" method = "POST">
+        <form id = "message-form" class = "form-group">
             <input class = "form-group" type = "text" id = "value" name = "value" placeholder = "bool">
-            <button name="value" type = "submit">Switch LED 2</button>
+            <button type = "submit">Switch LED 2</button>
         </form>
         
         <script>
@@ -56,7 +56,26 @@
                         socket.send(msg);
                     }
                 };
-            }            
+            }           
+            
+            (function($){ function processForm( e ){ 
+				$.ajax({ 
+					url: "http://raspberrypi.local:8484/pi/actuators/leds/2",
+					dataType: 'json',
+					type: 'post',
+					contentType: 'application/json',
+					data: JSON.stringify({"value": $('#value').val()}), 
+					processData: false,
+					// success: function( data, textStatus, jQxhr ){
+					// 	$('#response pre').html( JSON.stringify( data ) ); 
+					// },
+					// error: function( jqXhr, textStatus, errorThrown ){//#G 
+					// 	console.log( errorThrown ); 
+					// } 
+				}); 
+				e.preventDefault(); } 
+				$('#message-form').submit( processForm );
+			})(jQuery); 
             //subscribeToWs('ws://localhost:8484/pi/sensors/temperature');
             //subscribeToWs('ws://localhost:8484/things/coapDevice/sensors/co2');
             // subscribeToWs('ws://raspberrypi.local:8484/pi/sensors/pir');
