@@ -19,6 +19,13 @@ app.get("/pi", function(req, res){
     res.send("Welcome to CEOT Raspberry Pi")
 });
 
+app.use("/UI/pi/actuators", actuatorRoutesUI);
+app.use("/UI/pi/sensors", sensorRoutesUI);
+
+app.get("/UI/pi", function(req, res){
+    res.render("./../public/pi.html");
+});
+
 app.use(converter());
 
 module.exports = app;
