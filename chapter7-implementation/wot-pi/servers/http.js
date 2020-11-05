@@ -4,7 +4,9 @@ var express = require("express"),
     resources = require("../resources/model").resources,
     cors = require("cors"),
     bodyParser = require("body-parser"),
-    converter = require("./../middleware/converter");
+    converter = require("./../middleware/converter"),
+    actuatorRoutesUI = require("./../routes/actuatorsUI"),
+    sensorRoutesUI = require("./../routes/sensorsUI");
 
 var app  = express();
 
