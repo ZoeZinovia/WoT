@@ -41,6 +41,7 @@ function updateProperty(property, value){
 process.on("SIGING", function(){
     clearInterval(interval);
     updateProperty("livenow", false);
+    console.log("EXITING!");
     client.end();
     process.exit();
 });
