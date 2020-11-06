@@ -14,14 +14,33 @@ var client = mqtt.connect("mqtts://mqtt.evrythng.com:8883", {
 
 client.on("connect", function(){
     client.subscribe(thngUrl + "/properties/");
-    console.log("connected to client :)");
-    // updateProperty("livenow", true);
+    updateProperty("livenow", true);
 
-    // interval = setInterval(updateProperties, 5000);
+    interval = setInterval(updateProperties, 5000);
 });
 
 client.on("message", function(topic, message){
     console.log(message.toString());
 });
 
-// function updateProperties()
+function updateProperties(){
+    var voltage = (219.5 + Math.random()).toFixed(3);
+    updateProperty("voltage", voltage);
+
+    var current = (Math.random()*10).toFixed(3);
+    updateProperty("current", current);
+
+    var power = (voltage*current*(0.6+Math.random()/10)).toFixed(3);
+    updateProperty("power", power);
+};
+
+function updateProperty(property, value){
+    client.publish(thngUrl+"/properties/" + property, '[{"value": '+ value + '}]');
+}
+
+process.on("SIGING", function(){
+    clearInterval(interval);
+    updateProperty("livenow", false);
+    client.end();
+    process.exit();
+});
