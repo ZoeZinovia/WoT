@@ -38,7 +38,7 @@ function updateProperty(property, value){
     client.publish(thngUrl+"/properties/" + property, '[{"value": '+ value + '}]');
 }
 
-process.on("SIGING", function(){
+process.on("SIGINT", function(){
     clearInterval(interval);
     updateProperty("livenow", false);
     console.log("EXITING!");
