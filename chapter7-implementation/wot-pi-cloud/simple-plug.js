@@ -14,7 +14,7 @@ var client = mqtt.connect("mqtts://mqtt.evrythng.com:8883", {
 
 client.on("connect", function(){
     client.subscribe(thngUrl + "/properties/");
-    updateProperty("livenow", false);
+    updateProperty("livenow", true);
 
     interval = setInterval(updateProperties, 5000);
 });
@@ -39,8 +39,8 @@ function updateProperty(property, value){
 }
 
 process.on("SIGINT", function(){
-    clearInterval(interval);
     updateProperty("livenow", false);
+    clearInterval(interval);
     console.log("EXITING!");
     client.end();
     process.exit();
