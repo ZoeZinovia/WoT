@@ -14,6 +14,8 @@ var client = mqtt.connect("mqtts://mqtt.evrythng.com:8883", {
     password: thngApiKey
 });
 
+ledPlugin.start({"simulate": false, "frequency" : 5000});
+
 client.on("connect", function(){
     console.log("connected :)");
     client.subscribe(thngUrl + "/properties/");
