@@ -1,7 +1,7 @@
 var express = require("express"),
     router = express.Router(),
-    resources = require("../resources/model").resources,
-    setResource = require("../resources/model").set,
+    resources = require("../resources/modelI").resources,
+    setResource = require("../resources/modelI").set,
     ledPlugin = require("./../plugins/internal/ledPlugin");
 
 router.route("/").get(function(req, res, next){

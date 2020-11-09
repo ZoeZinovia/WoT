@@ -1,6 +1,6 @@
 var express = require('express'),
   router = express.Router(),
-  resources = require('./../resources/model');
+  resources = require('./../resources/modelI');
 
 router.route('/coapDevice/sensors/:id').get(function (req, res, next) {
   var id = req.params.id;

@@ -1,6 +1,6 @@
 var express = require('express'),
   router = express.Router(),
-  resources = require('./../resources/model');
+  resources = require('./../resources/modelI');
 
 router.route('/').get(function (req, res, next) {
   req.result = resources.pi.actuators;
@@ -34,7 +34,7 @@ module.exports = router;
 
 var express = require('express'),
 router = express.Router(),
-resources = require('./../resources/model');
+resources = require('./../resources/modelI');
 
 router.route('/').get(function (req, res, next) { // #A
  res.send(resources.pi.actuators); // #B

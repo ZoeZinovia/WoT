@@ -1,5 +1,5 @@
 var utils = require('./../../utils/utils.js'),
-  resources = require('./../../resources/model');
+  resources = require('./../../resources/modelI');
 
 var interval, me, pluginName, pollInterval;
 var localParams = {'simulate': false, 'frequency': 5000};

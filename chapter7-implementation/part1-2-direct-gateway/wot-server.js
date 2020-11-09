@@ -1,7 +1,7 @@
 // Final version
 var httpServer = require('./servers/http'),
   wsServer = require('./servers/websockets'),
-  resources = require('./resources/model');
+  resources = require('./resources/modelII');
 
 // Internal Plugins
 var ledsPlugin = require('./plugins/internal/ledsPlugin'), //#A
@@ -35,7 +35,7 @@ var server = httpServer.listen(resources.pi.port, function () {
 /*
  // Initial version:
  var httpServer = require('./servers/http'), //#A
- resources = require('./resources/model');
+ resources = require('./resources/modelI');
 
  var server = httpServer.listen(resources.pi.port, function () { //#B
   console.info('Your WoT Pi is up and running on port %s', resources.pi.port); //#C

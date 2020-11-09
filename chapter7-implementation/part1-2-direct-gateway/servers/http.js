@@ -3,7 +3,7 @@ var express = require('express'),
   actuatorsRoutes = require('./../routes/actuators'),
   sensorRoutes = require('./../routes/sensors'),
   thingsRoutes = require('./../routes/things'),
-  resources = require('./../resources/model'),
+  resources = require('./../resources/modelI'),
   converter = require('./../middleware/converter'),
   cors = require('cors'),
   bodyParser = require('body-parser');
@@ -33,7 +33,7 @@ module.exports = app;
 var express = require('express'),
   actuatorsRoutes = require('./../routes/actuators'),
   sensorRoutes = require('./../routes/sensors'),
-  resources = require('./../resources/model'), //#A
+  resources = require('./../resources/modelI'), //#A
   cors = require('cors'); 
 
 var app = express(); //#B

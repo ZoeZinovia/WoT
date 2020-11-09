@@ -1,4 +1,4 @@
-var resources = require('./../../resources/model'),
+var resources = require('./../../resources/modelI'),
   utils = require('./../../utils/utils.js');
 
 var interval, sensor;

@@ -1,4 +1,4 @@
-var resources = require('./../../resources/model');
+var resources = require('./../../resources/modelI');
 
 var actuator, interval;
 var model = resources.pi.actuators.leds['1'];
