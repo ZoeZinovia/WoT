@@ -1,5 +1,5 @@
-var resources = require("../../resources/modelI").resources,
-    setResource = require("../../resources/modelI").set, 
+var resources = require("../../resources/model").resources,
+    setResource = require("../../resources/model").set, 
     interval,
     sensor,
     model = resources.pi.sensors.pir,

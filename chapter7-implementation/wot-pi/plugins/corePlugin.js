@@ -1,7 +1,7 @@
 var utils = require('./../utils/utils.js'),
   util = require('util'),
   _ = require('lodash/collection'),
-  resources = require('./../resources/modelI').resourceObject;
+  resources = require('./../resources/model').resourceObject;
 
 /**
  * params: e.g., {'simulate': false, 'frequency': 5000};
