@@ -39,9 +39,9 @@ function updateProperty(property, value){
 }
 
 process.on("SIGINT", function(){
-    updateProperty("livenow", false);
     clearInterval(interval);
     console.log("EXITING!");
+    updateProperty("livenow", false);
     client.end();
     process.exit();
 });
