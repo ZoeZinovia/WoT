@@ -1,7 +1,7 @@
 var WebSocketServer = require('ws').Server,
     updates = [];
 
-var resources = require("../resources/modelII").resources;
+var resources = require("../resources/modelI").resources;
 
 exports.listen = function(server) {
   var wss = new WebSocketServer({server: server}); //#A
