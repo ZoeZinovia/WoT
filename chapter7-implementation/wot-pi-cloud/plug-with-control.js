@@ -14,8 +14,9 @@ var client = mqtt.connect("mqtts://mqtt.evrythng.com:8883", {
 });
 
 client.on("connect", function(){
+    console.log("connected :)");
     client.subscribe(thngUrl + "/properties/");
-    client.subscribe(thngUrl+'/actions/all'); // #A
+    client.subscribe(thngUrl+'/actions/all');
     updateProperty('livenow',true);
     if (! updateInterval) updateInterval = setInterval(updateProperties, 5000);
 });
@@ -28,7 +29,7 @@ client.on("message", function(topic, message){
             if(resources[3] && resources[3] === "properties"){
                 var property = JSON.parse(message);
                 console.log("Property was updated: " + property[0].key + " = " + property[0].value);
-            } else if (resources[3] && resource[3] === "actions"){
+            } else if (resources[3] && resources[3] === "actions"){
                 var action = JSON.parse(message);
                 handleAction(action);
             }
@@ -68,7 +69,7 @@ function updateProperty(property, value){
 }
 
 process.on("SIGINT", function(){
-    clearInterval(interval);
+    clearInterval(updateInterval);
     console.log("EXITING!");
     updateProperty("livenow", false);
     client.end();
