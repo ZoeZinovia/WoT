@@ -34,15 +34,14 @@ function updateProperties(){
     updateProperty("power", power);
 };
 
-process.on("SIGINT", function(){
-    clearInterval(interval);
-    console.log("EXITING!");
-    updateProperty("power", 0);
-    client.end();
-    process.exit();
-});
-
 function updateProperty(property, value){
     client.publish(thngUrl+"/properties/" + property, '[{"value": '+ value + '}]');
 }
 
+process.on("SIGINT", function(){
+    clearInterval(interval);
+    console.log("EXITING!");
+    updateProperty("livenow", false);
+    client.end();
+    process.exit();
+});
